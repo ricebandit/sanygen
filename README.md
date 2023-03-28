@@ -2,6 +2,8 @@
 
 A starter theme called Sanytize, built off of _underscores boiler plate.
 
+For detailed info on _underscores, https://underscores.me/
+
 == Description ==
 
 A theme for Sanygen's website.
