@@ -1,0 +1,44 @@
+
+@import '_fonts';
+
+/*
+BASE UNDERSCORES THEME CSS
+*/
+@import '_underscores';
+
+
+/*
+CUSTOM BOOTSTRAP
+*/
+
+
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+@import "../node_modules/bootstrap/scss/_maps";
+
+$custom-colors: (
+    "darkblue" : #26465f,
+    "blue": #407ef2,
+    "seafoam": #45bdb3,
+    "orange": #ff8729,
+    "gray" : #e6e7e8
+);
+
+$theme-colors: map-merge( $custom-colors, $theme-colors);
+
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+
+/*
+SANYGEN
+*/
+
+@import '_sanygen';
+@import '_footer';
+@import '_header';
+@import '_home';
+@import '_category';
+@import '_standardpage';
+@import '_searchresults';
+

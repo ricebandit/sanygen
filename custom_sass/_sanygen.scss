@@ -1,0 +1,140 @@
+body#sanygen{
+    font-family: 'Montserrat', sans-serif;
+    font-size:16px;
+    margin:auto;
+    overflow-x:hidden;
+
+    &.fixed{
+        overflow:hidden;
+    }
+
+    .header-font{font-family:'Powerr';}
+
+    .text-darkblue{color:#26465f;}
+    .text-orange{color:#FF8729;}
+    .text-blue{color:#407ef2;}
+    .text-seafoam{color:#45bdb3;}
+    .text-gray{color:#e6e7e8;}
+    .text-white{color:#ffffff;}
+
+    .background-darkblue{background:#26465f;}
+    .background-orange{background:#FF8729;}
+    .background-blue{background:#407ef2;}
+    .background-seafoam{background:#45bdb3;}
+    .background-gray{background:#e6e7e8;}
+    .background-white{background:#ffffff;}
+
+    h1{
+        font-weight:600;
+        &.header{
+            font-size:60px;
+            font-family:'Powerr';
+            font-weight:600;
+        }
+
+        &.periodic{
+            font-size:80px;
+            font-family:'Powerr';
+            font-weight:400;
+        }
+        
+    }
+
+    h2{
+        &.header{
+            font-size:55px;
+            font-family:'Powerr';
+            font-weight:600;
+        }
+    }
+
+    h3{
+
+        &.home-category-header{
+            font-size:30px;
+            font-family:'Powerr';
+            font-weight:600;
+        }
+    }
+
+    h4{
+        &.header{
+            font-size:25px;
+            font-family:'Powerr';
+            font-weight:600;
+        }
+        
+        &.product-name{
+            font-size:25px;
+            font-family:'Powerr';
+            font-weight:400;
+        }
+    }
+
+    h3{
+        font-size:20px;
+
+        .pill{
+            font-size:20px;
+            font-family:'Powerr';
+        }
+    }
+
+    p{
+        font-size:16px;
+
+        .cta{
+            font-size:16px;
+            font-family:'Powerr';
+        }
+
+        &.header{
+            font-family:'Powerr';
+            font-weight:400;
+        }
+    }
+
+    .cta-solid-pill{
+        border-radius:50px;
+        font-family: "Powerr";
+        font-weight:400;
+        padding:8px 16px;
+        text-align:center;
+        text-decoration:none;
+        transition:800ms padding;
+
+        &:hover{
+            transition:250ms padding;
+            padding:8px 24px;
+        }
+    }
+
+    .pill-cta{
+        border-radius:50px;
+        font-family:"Powerr";
+        padding:9px 22px;
+        text-decoration:none;
+        
+        &.orange{
+            background:$orange;
+            color:#26465f;
+        }
+    }
+
+    a.link{
+        font-family:"Powerr";
+        font-size:20px;
+        position:relative;
+        text-decoration:none;
+
+        &:after{
+            background:$orange;
+            bottom:0;
+            content:'';
+            height:1px;
+            left:0;
+            position:absolute;
+            width:100%;
+        }
+    }
+}

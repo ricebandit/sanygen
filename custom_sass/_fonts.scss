@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Black.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Black.woff') format('woff'),
+        url('fonts/powerr/Powerr-Black.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Black.svg#Powerr-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Regular.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Regular.woff') format('woff'),
+        url('fonts/powerr/Powerr-Regular.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Regular.svg#Powerr-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr ExtLt';
+    src: url('fonts/powerr/Powerr-ExtraLight.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-ExtraLight.woff') format('woff'),
+        url('fonts/powerr/Powerr-ExtraLight.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-ExtraLight.svg#Powerr-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr Med';
+    src: url('fonts/powerr/Powerr-Medium.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Medium.woff') format('woff'),
+        url('fonts/powerr/Powerr-Medium.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Medium.svg#Powerr-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Light.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Light.woff') format('woff'),
+        url('fonts/powerr/Powerr-Light.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Light.svg#Powerr-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr ExtLt';
+    src: url('fonts/powerr/Powerr-ExtraLight_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-ExtraLight_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-ExtraLight_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-ExtraLight_1.svg#Powerr-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Bold.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Bold.woff') format('woff'),
+        url('fonts/powerr/Powerr-Bold.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Bold.svg#Powerr-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Thin.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Thin.woff') format('woff'),
+        url('fonts/powerr/Powerr-Thin.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Thin.svg#Powerr-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Regular_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Regular_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Regular_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Regular_1.svg#Powerr-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr ExtBd';
+    src: url('fonts/powerr/Powerr-ExtraBold.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-ExtraBold.woff') format('woff'),
+        url('fonts/powerr/Powerr-ExtraBold.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-ExtraBold.svg#Powerr-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Bold_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Bold_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Bold_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Bold_1.svg#Powerr-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr Med';
+    src: url('fonts/powerr/Powerr-Medium_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Medium_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Medium_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Medium_1.svg#Powerr-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr SemBd';
+    src: url('fonts/powerr/Powerr-SemiBold.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-SemiBold.woff') format('woff'),
+        url('fonts/powerr/Powerr-SemiBold.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-SemiBold.svg#Powerr-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr SemBd';
+    src: url('fonts/powerr/Powerr-SemiBold_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-SemiBold_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-SemiBold_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-SemiBold_1.svg#Powerr-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Thin_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Thin_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Thin_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Thin_1.svg#Powerr-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Black_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Black_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Black_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Black_1.svg#Powerr-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr ExtBd';
+    src: url('fonts/powerr/Powerr-ExtraBold_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-ExtraBold_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-ExtraBold_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-ExtraBold_1.svg#Powerr-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Powerr';
+    src: url('fonts/powerr/Powerr-Light_1.woff2') format('woff2'),
+        url('fonts/powerr/Powerr-Light_1.woff') format('woff'),
+        url('fonts/powerr/Powerr-Light_1.ttf') format('truetype'),
+        url('fonts/powerr/Powerr-Light_1.svg#Powerr-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

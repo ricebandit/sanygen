@@ -1,0 +1,154 @@
+.home{
+    .hero{
+        height:800px;
+        overflow:hidden;
+        position:relative;
+
+        .bg-decor{
+            height:100%;
+            left:0;
+            position:absolute;
+            top:0;
+            width:100%;
+        }
+
+        .container{
+            position:relative;
+        }
+    }
+
+    .products{
+        .categories{
+            gap:15px;
+            grid-template-columns:1fr 1fr;
+
+            .card{
+                align-self:stretch;
+                aspect-ratio:10/8;
+                background:url(/wp-content/uploads/2023/03/fpo-home-category-bg.jpg)no-repeat center;
+                background-size:cover;
+                border-radius:20px;
+                margin:auto;
+                text-decoration:none;
+                width:100%;
+
+                .card-body{
+                    flex-direction:column;
+
+                    .card-head{
+                        align-items:center;
+                        flex:1;
+
+                        .icon{
+                            width:30%;
+                        }
+                    }
+
+
+                    .card-text-container{
+                        align-items:center;
+                        flex:1;
+
+                        h4{
+                            text-align:center;
+                            transform:translate3d(0, 7px, 0);
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    .guarantee{
+        padding:5% 0;
+
+        .left{
+            position:relative;
+
+            .gallery-background{
+                height:100%;
+                left:0;
+                position:absolute;
+                top:0;
+                width:100%;
+            }
+
+            .gallery-player{
+                aspect-ratio:600 / 400;
+                border-radius:20px;
+                margin:4% 10% 10% 11%;
+                overflow:hidden;
+                position:relative;
+                width:80%;
+
+                .gallery-img{
+                    height:100%;
+                    left:0;
+                    position: absolute;
+                    opacity:0;
+                    top:0;
+                    transition:20ms opacity 980ms;
+                    width:100%;
+
+                    &.show{
+                        opacity:1;
+                        transition:1000ms opacity;
+                        z-index:1;
+                    }
+                }
+            }
+        }
+
+        .right{
+            position:relative;
+        }
+
+    }
+
+    .related{
+        min-height:600px;
+        position:relative;
+
+        .background-split{
+            height:100%;
+            left:0;
+            position:absolute;
+            top:0;
+            width:100%;
+
+            .row{
+                height:100%;
+                margin:0;
+                width:100%;
+
+            }
+        }
+
+        .container.max-limited{
+            max-width:800px;
+            z-index:1;
+
+            .left{
+                border-right:1px solid #8f9ca8;
+                padding:30px 80px 30px 0;
+            }
+
+            .right{
+                padding:30px 0 30px 80px;
+            }
+
+        }
+    }
+}
+
+@media screen and (min-width:768px){
+    .home{
+        .products{
+            .categories{
+                grid-template-columns:1fr 1fr 1fr;
+            }
+        }
+    }
+}
