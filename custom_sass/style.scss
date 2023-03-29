@@ -16,9 +16,18 @@ CUSTOM BOOTSTRAP
 @import "../node_modules/bootstrap/scss/_variables";
 @import "../node_modules/bootstrap/scss/_maps";
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 900px,
+  lg: 1000px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
 $custom-colors: (
     "darkblue" : #26465f,
-    "blue": #407ef2,
+    "blue": #0085ca,
     "seafoam": #45bdb3,
     "orange": #ff8729,
     "gray" : #e6e7e8

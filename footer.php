@@ -14,31 +14,26 @@
 	<footer id="colophon" class="site-footer container-fluid background-blue p-md-5 p-2">
 		<div class="container">
 
-			<div class="row">
-
-				<div class="col-6 col-sm-4 col-md-2">
-					<p class="fw-bold">PRODUCTS</p>
+			<div class="row pb-5 pt-5">
+				<div class="col-6 mb-4 order-2 col-md-3 col-xl-2 order-xl-1 col-xxl-2">
+					<p class="p-lg">PRODUCTS</p>
 					<?php wp_nav_menu( array( 'theme_location' => 'products' ) ); ?>
 				</div>
-				<div class="col-6 col-sm-4 col-md-2">
-					<p class="fw-bold">ABOUT US</p>
+				<div class="col-6 mb-4 order-3 col-md-3 col-xl-2 order-xl-2 col-xxl-2">
+					<p class="p-lg">ABOUT US</p>
 					<?php wp_nav_menu( array( 'theme_location' => 'aboutus' ) ); ?>
 				</div>
-				<div class="col-6 col-sm-4 col-md-2">
-					<p class="fw-bold">RESOURCES</p>
+				<div class="col-6 mb-4 order-4 col-md-3 col-xl-2 order-xl-3 col-xxl-2">
+					<p class="p-lg">RESOURCES</p>
 					<?php wp_nav_menu( array( 'theme_location' => 'resources' ) ); ?>
 				</div>
-				<div class="col-6 col-sm-4 col-md-2">
-					<p class="fw-bold">CONTACT US</p>
+				<div class="col-6 mb-4 order-5 col-md-3 col-xl-2 order-xl-4 col-xxl-2">
+					<p class="p-lg">CONTACT US</p>
 					<?php wp_nav_menu( array( 'theme_location' => 'contact' ) ); ?>
 				</div>
-				<div class="col-6 col-sm-4 col-md-2 d-none d-lg-block">
-					
-				</div>
-				<div class="col-6 col-sm-4 col-md-2">
+				<div class="phone-numbers container mb-3 mt-3 order-1 col-xl-4 order-xl-5 mt-xl-0">
 					<?php wp_nav_menu( array( 'theme_location' => 'phone' ) ); ?>
 				</div>
-
 			</div>
 
 		</div>
@@ -48,7 +43,7 @@
 <?php wp_footer(); ?>
 
 <div class="offcanvas offcanvas-end" tab-index="-1" id="mobilemenu" aria-labelledby="mobilemenu-label">
-	<div class="container mt-2 p-0">
+	<div class="container-fluid mt-0 p-0">
 		<div class="row justify-content-end">
 			<div class="btn close">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">

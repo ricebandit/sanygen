@@ -1,6 +1,5 @@
 class GalleryLooper{
     constructor(img_array, ms){
-        console.log('GalleryLooper', img_array);
 
         this.intSpd = ms;
         this.index = 0;

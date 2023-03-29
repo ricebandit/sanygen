@@ -12,25 +12,22 @@ body#sanygen{
 
     .text-darkblue{color:#26465f;}
     .text-orange{color:#FF8729;}
-    .text-blue{color:#407ef2;}
+    .text-blue{color:#0085ca;}
     .text-seafoam{color:#45bdb3;}
     .text-gray{color:#e6e7e8;}
     .text-white{color:#ffffff;}
 
     .background-darkblue{background:#26465f;}
     .background-orange{background:#FF8729;}
-    .background-blue{background:#407ef2;}
+    .background-blue{background:#0085ca;}
     .background-seafoam{background:#45bdb3;}
     .background-gray{background:#e6e7e8;}
     .background-white{background:#ffffff;}
 
     h1{
+        font-size:60px;
+        font-family:'Powerr';
         font-weight:600;
-        &.header{
-            font-size:60px;
-            font-family:'Powerr';
-            font-weight:600;
-        }
 
         &.periodic{
             font-size:80px;
@@ -41,42 +38,31 @@ body#sanygen{
     }
 
     h2{
+        font-size:55px;
+        font-family:'Powerr';
         &.header{
-            font-size:55px;
-            font-family:'Powerr';
             font-weight:600;
         }
     }
 
     h3{
+        font-size:30px;
+        font-family:'Powerr';
 
         &.home-category-header{
-            font-size:30px;
-            font-family:'Powerr';
             font-weight:600;
         }
     }
 
     h4{
+        font-size:25px;
+        font-family:'Powerr';
         &.header{
-            font-size:25px;
-            font-family:'Powerr';
             font-weight:600;
         }
         
         &.product-name{
-            font-size:25px;
-            font-family:'Powerr';
             font-weight:400;
-        }
-    }
-
-    h3{
-        font-size:20px;
-
-        .pill{
-            font-size:20px;
-            font-family:'Powerr';
         }
     }
 
@@ -92,6 +78,15 @@ body#sanygen{
             font-family:'Powerr';
             font-weight:400;
         }
+
+        &.p-lg{
+            font-size:20px;
+            font-weight:400;
+        }
+    }
+    .pill{
+        font-size:20px;
+        font-family:'Powerr';
     }
 
     .cta-solid-pill{
@@ -112,29 +107,54 @@ body#sanygen{
     .pill-cta{
         border-radius:50px;
         font-family:"Powerr";
-        padding:9px 22px;
+        font-size:20px;
+        outline:0px solid rgba(255, 135, 41, 0.2);
+        padding:16px 79px;
         text-decoration:none;
+
+        transition:250ms outline;
         
         &.orange{
             background:$orange;
             color:#26465f;
         }
+
+        &.orange:active{
+            background: rgba(255, 135, 41, 0.6);
+        }
+
+        &:hover{
+            outline:8px solid rgba(255, 135, 41, 0.2);
+        }
+        
+        &:active{
+            background: rgba(255, 135, 41, 0.6);
+            outline:8px solid rgba(255, 135, 41, 0.12);
+        }
     }
 
     a.link{
-        font-family:"Powerr";
-        font-size:20px;
+        font-size:18px;
+        font-weight:600;
         position:relative;
         text-decoration:none;
+        text-transform: uppercase;
 
         &:after{
             background:$orange;
-            bottom:0;
+            bottom:-4px;
             content:'';
-            height:1px;
+            height:4px;
             left:0;
             position:absolute;
+            transform-origin: 0 0;
+            transform:scaleX(0);
+            transition:250ms transform;
             width:100%;
+        }
+
+        &:hover:after{
+            transform:scaleX(1);
         }
     }
 }
