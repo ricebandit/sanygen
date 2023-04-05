@@ -203,11 +203,13 @@ if(product_gallery.length > 0){
             current_thumb.classList.remove('selected');
 
             // Select new image
-            const next_img = document.querySelector('.post-template-single-product #product .product-gallery .images .g-image#' + evt.target.dataset.img);
+            const parent = evt.target.parentNode.parentNode;
+            
+            const next_img = document.querySelector('.post-template-single-product #product .product-gallery .images .g-image#' + parent.dataset.img);
             next_img.classList.add('selected');
 
             // Select new thumb
-            const next_thumb = evt.target;
+            const next_thumb = parent;
             next_thumb.classList.add('selected');
 
         });

@@ -86,7 +86,10 @@ get_header();
 									}
 							?>
 							<li class="img-thumb  <?php echo $selectState; ?>" data-img="g-img-<?php echo $i ?>">
-								<img src="<?php echo $imgth; ?>" alt="" class="src">
+								<div class="thumb-img-container">
+									<img src="<?php echo $imgth; ?>" alt="" class="src">
+								</div>
+								
 							</li>
 							<?php
 									$i++;
@@ -156,6 +159,7 @@ get_header();
 				?>
 
 				<a href="<?php echo get_permalink($post['product_item']->ID); ?>" class="product-item card d-flex flex-columns">
+					<div class="bg"></div>
 					<div class="img-container d-flex justify-content-center align-items-center">
 						<img src="<?php echo get_field('product_gallery',$post['product_item']->ID)[0]; ?>" alt="">
 					</div>

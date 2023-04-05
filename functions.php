@@ -262,30 +262,39 @@ function search_pagination() {
     $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
 
     $max   = intval( $wp_query->max_num_pages );
-  
+	
 
 	if ( $paged == 1 ){
 		$links[] = $paged;
 		$links[] = $paged + 1;
-		$links[] = $paged + 2;
+		if($max > 2){
+			$links[] = $paged + 2;
+		}
 	}
 
 	if ( $paged == 2 ){
 		$links[] = $paged - 1;
 		$links[] = $paged;
-		$links[] = $paged + 1;
+		if($max > 2){
+			$links[] = $paged + 1;
+		}
 	}
 
+		
 	if( ($paged > 2 && $paged < $max)){
 		$links[] = $paged - 1;
 		$links[] = $paged;
-		$links[] = $paged + 1;
+		if($max > 2){
+			$links[] = $paged + 1;
+		}
 	}
 
-	if($paged == $max){
-		$links[] = $paged - 2;
-		$links[] = $paged - 1;
-		$links[] = $paged;
+	if($max > 2){
+		if($paged == $max){
+			$links[] = $paged - 2;
+			$links[] = $paged - 1;
+			$links[] = $paged;
+		}
 	}
 
   

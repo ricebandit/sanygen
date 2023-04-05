@@ -442,7 +442,7 @@ get_header();
 										?>
 											<div class="container col-6 m-0 p-0">
 												<p class="darkblue mt-1 mb-1"><?php echo $item['contact_method']; ?></p>
-												<p class="header darkblue mt-1 mb-1"><?php echo $item['contact_info']; ?></p>
+												<a class="contact-link header darkblue mt-1 mb-1" href="<?php echo $item['contact_url']; ?>"><?php echo $item['contact_info']; ?></a>
 											</div>
 										<?php
 												}
@@ -789,7 +789,7 @@ for(let i = 0; i < accordionItems.length; i++){
 
 	if(i == 0){
 		const openInitialContent = document.querySelector('.accordian_group_full_width .accordion #collapse-0 .accordion-body p');
-		collapse.style.height = (openInitialContent.clientHeight + 50) + 'px';
+		collapse.style.height = (openInitialContent.clientHeight + 70) + 'px';
 	}
 	
 	header.addEventListener('click', (evt) => {
@@ -851,7 +851,7 @@ for(let i = 0; i < accordionItems.length; i++){
 		
 						<section class="full-width_poster_half_text container-fluid d-flex justify-content-center align-items-start <?php echo $addMarginTop; ?>">
 							<div class="bg d-none d-md-block" style="background:url(<?php echo get_sub_field('image'); ?>)no-repeat center top; background-size:cover;"></div>
-							<div class="hero-bg d-none d-md-block" style="background:url(<?php echo get_sub_field('decor'); ?>)no-repeat center right; background-size:auto 100%;"></div>
+							<div class="hero-bg d-none d-md-block" style="background:url(<?php echo get_sub_field('decor'); ?>)no-repeat; background-size:cover;"></div>
 
 							<div class="container">
 								<div class="row">
@@ -859,7 +859,7 @@ for(let i = 0; i < accordionItems.length; i++){
 										<h2 class="header text-darkblue"><?php echo get_sub_field('title'); ?></h2>
 										<div class="description text-darkblue"><?php echo get_sub_field('description_text'); ?></div>
 
-										<a href="<?php echo get_sub_field('cta_url'); ?>" class="cta-solid-pill background-orange text-darkblue"><?php echo get_sub_field('cta_text'); ?></a>
+										<a href="<?php echo get_sub_field('cta_url'); ?>" class="pill-cta orange text-darkblue"><?php echo get_sub_field('cta_text'); ?></a>
 									</div>
 								</div>
 							</div>
