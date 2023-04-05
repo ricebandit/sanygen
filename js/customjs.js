@@ -98,7 +98,7 @@ for(let mobileMenuI = 0; mobileMenuI < mobileLI.length; mobileMenuI++){
 
     mLI.addEventListener('click', (evt)=>{
         if(evt.target.parentElement.classList.contains('menu-item-has-children') === true ){
-            evt.preventDefault();
+            //evt.preventDefault();
 
     
             setTimeout( ()=>{
@@ -155,6 +155,64 @@ if( cardtextcarousels.length > 0 ){
 }
 
 
+/** 
+ * Product Detail Gallery Selector
+*/
+
+const product_gallery = document.querySelectorAll('.post-template-single-product #product .product-gallery')
+
+if(product_gallery.length > 0){
+    console.log('product-gallery detected');
+    const gallery_thumbnails_container = document.querySelector('.post-template-single-product #product .product-gallery .thumbnails ul');
+
+    new Glider(gallery_thumbnails_container, {
+        slidesToShow: 5,
+        dots: false,
+        arrows: {
+            prev: '.glider-prev',
+            next: '.glider-next'
+        },
+        responsive:[
+            {
+                breakpoint:600,
+                settings:{
+                    slidesToShow:5
+                }
+            },{
+                breakpoint:1200,
+                settings:{
+                    slidesToShow:5
+                }
+            }
+        ]
+    });
+
+    // Activate thumbnail buttons
+    const gallery_thumbnails = document.querySelectorAll('.post-template-single-product #product .product-gallery .thumbnails ul li');
+    
+    for(let gti = 0; gti < gallery_thumbnails.length; gti++){
+        const thumb = gallery_thumbnails[gti];
+
+        thumb.addEventListener('click', (evt)=>{
+            // Deselect current image
+            const current_img = document.querySelector('.post-template-single-product #product .product-gallery .images .g-image.selected');
+            current_img.classList.remove('selected');
+
+            // Deselect curent thumbnail
+            const current_thumb = document.querySelector('.post-template-single-product #product .product-gallery .thumbnails ul li.selected');
+            current_thumb.classList.remove('selected');
+
+            // Select new image
+            const next_img = document.querySelector('.post-template-single-product #product .product-gallery .images .g-image#' + evt.target.dataset.img);
+            next_img.classList.add('selected');
+
+            // Select new thumb
+            const next_thumb = evt.target;
+            next_thumb.classList.add('selected');
+
+        });
+    }
+}
 
 
 

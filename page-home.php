@@ -11,20 +11,20 @@ get_header();
 
 	<section class="hero container-fluid d-flex align-items-center" style="background:url(<?php echo get_field('hero_image'); ?>)no-repeat center; background-size:cover;">
 		<div class="bg-decor" style="background:url(<?php echo get_field('hero_image_decoration');?>)no-repeat center top; background-size:cover;"></div>
-		<div class="container">
+		<div class="content col-12 col-xxl-10 offset-xxl-1 mt-md-5 mb-md-5">
 			<div class="row">
-				<div class="left col-md-6">
+				<div class="left col-md-6 col-lg-5 col-xxl-4">
 					<h1 class="header text-darkblue"><?php echo get_field('hero_title'); ?></h1>
-					<p class="text-darkblue"><?php echo get_field('hero_description'); ?></p>
-					<a class="pill-cta orange" href="<?php echo get_field('hero_cta_url'); ?>"><?php echo get_field('hero_cta_text'); ?></a>
+					<div class="text-darkblue col-6 col-lg-12"><?php echo get_field('hero_description'); ?></div>
+					<a class="pill-cta orange mt-3" href="<?php echo get_field('hero_cta_url'); ?>"><?php echo get_field('hero_cta_text'); ?></a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="products container-fluid d-flex align-items-start flex-column" style="background:url(<?php echo get_field('product_background'); ?>)no-repeat center top;background-size:100% auto;">
-		<div class="container">
-			<div class="container col-6">
+	<section class="products container-fluid d-flex align-items-start flex-column" style="background:url(<?php echo get_field('product_background'); ?>)no-repeat;">
+		<div class="container-fluid">
+			<div class="col-lg-6 offset-lg-1 col-xxl-4 offset-xxl-2 d-flex align-items-start flex-column">
 				<h2 class="header text-darkblue"><?php echo get_field('products_title'); ?></h2>
 				<p><?php echo get_field('products_description'); ?></p>
 
@@ -32,13 +32,15 @@ get_header();
 			</div>
 		</div>
 
-		<div class="categories container d-grid">
+		<div class="categories container-fluid">
+			<div class="col-lg-10 offset-lg-1 col-xxl-8 offset-xxl-2 d-grid">
 			<?php 
 				if( count( get_field('product_category_items') ) > 0 ){
+					$cardCount = 0;
 					foreach( get_field('product_category_items') as $item ){
 			?>
 
-				<a class="card col-6 col-sm-4 border-0" href="<?php echo $item['category_url']; ?>">
+				<a id="card-<?php echo $cardCount; ?>"class="card col-6 col-sm-4 border-0" href="<?php echo $item['category_url']; ?>">
 					<div class="card-body d-flex">
 						<div class="card-head d-flex justify-content-center">
 							<img class="icon" src="<?php echo $item['category_icon']; ?>" alt="">
@@ -51,18 +53,20 @@ get_header();
 				</a>
 
 			<?php
+						$cardCount++;
 					}
 				}
 			?>
+			</div>
 
 		</div>
 	</section>
 
 	<section class="guarantee container-fluid d-flex justify-content-center" style="background:url(<?php echo get_field('guarantee_background'); ?>)no-repeat center;background-size:cover;">
 		
-		<div class="container d-flex">
-			<div class="row col-12">
-				<div class="left col-6 d-flex align-items-center">
+		<div class="container-fluid">
+			<div class="row d-flex flex-column flex-md-row">
+				<div class="left col-md-6 d-flex align-items-center">
 					<div class="gallery-background" style="background:url(<?php echo get_field('guarantee_gallery_bg'); ?>)no-repeat center;background-size:contain;"></div>
 
 					<div class="gallery-player container p-0">
@@ -91,11 +95,11 @@ get_header();
 					?>
 					</div>
 				</div>
-				<div class="right col-6">
+				<div class="right col-md-6">
 					<div class="container">
 						<img src="<?php echo get_field('guarantee_stamp_image'); ?>" alt="" class="stamp">
 						<h2 class="header text-darkblue"><?php echo get_field('guarantee_title'); ?></h2>
-						<p class="text-darkblue"><?php echo get_field('guarantee_text'); ?></p>
+						<div class="guarantee-description text-darkblue"><?php echo get_field('guarantee_text'); ?></div>
 						<a href="<?php echo get_field('guarantee_cta_url'); ?>" class="pill-cta background-orange text-darkblue"><?php echo get_field('guarantee_cta_text'); ?></a>
 					</div>
 				</div>
@@ -111,9 +115,9 @@ get_header();
 			</div>
 
 		</div>
-		<div class="container max-limited align-items-center d-flex">
-			<div class="row d-flex justify-content-center">
-				<div class="left col-6">
+		<div class="container-fluid max-limited align-items-center d-flex">
+			<div class="row d-flex flex-column flex-md-row justify-content-center">
+				<div class="left col-md-6">
 					<div class="row d-flex">
 						<div class="col-3">
 							<img src="<?php echo get_field('related_links')[0]['link_icon'] ?>" alt="" class="icon">
@@ -125,7 +129,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="right col-6">
+				<div class="right col-md-6">
 					<div class="row d-flex">
 						<div class="col-3">
 							<img src="<?php echo get_field('related_links')[1]['link_icon'] ?>" alt="" class="icon">

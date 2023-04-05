@@ -24,6 +24,14 @@ body#sanygen{
     .background-gray{background:#e6e7e8;}
     .background-white{background:#ffffff;}
 
+    .decor-text{
+        font-family:'Powerr' !important;
+    }
+
+    .text-transform-unset{
+        text-transform:unset !important;
+    }
+
     h1{
         font-size:60px;
         font-family:'Powerr';
@@ -51,6 +59,14 @@ body#sanygen{
 
         &.home-category-header{
             font-weight:600;
+        }
+
+        &.bold{
+            font-weight:600;
+        }
+
+        &.body-font{
+            font-family: 'Montserrat', sans-serif;
         }
     }
 
@@ -134,11 +150,24 @@ body#sanygen{
     }
 
     a.link{
+        display:inline-block;
         font-size:18px;
         font-weight:600;
+        margin-right:10px;
         position:relative;
         text-decoration:none;
         text-transform: uppercase;
+
+        &.bold{
+            font-family:"Powerr";
+            font-weight:400;
+            margin-bottom:4px;
+
+            &:after{
+                bottom:2px;
+                height:1px;
+            }
+        }
 
         &:after{
             background:$orange;
@@ -155,6 +184,119 @@ body#sanygen{
 
         &:hover:after{
             transform:scaleX(1);
+        }
+    }
+
+    /*
+    Glider Carousel
+    */
+    .glider-arrow{
+        background:url(/wp-content/uploads/2023/04/carousel-arrow.svg)no-repeat center;
+        background-size:contain;
+        height:18px;
+        left:auto;
+        position:relative;
+        right:auto;
+        top:auto;
+        width:18px;
+
+        &.glider-prev{
+            transform:rotate(180deg);
+        }
+    }
+
+    .arrow-container{
+        position:relative;
+    }
+
+    /*
+    BREADCRUMBS
+    */
+
+    &.page_search{
+        .breadcrumbs{
+            padding-top:50px;
+        }
+    }
+
+    .breadcrumbs{
+        margin-bottom:76px;
+        position:relative;
+
+        &.subnavPadding{
+            padding-top:50px;
+        }
+
+        a,a:visited,a:active{
+            font-family:'Powerr';
+            font-weight:300;
+            font-size:16px;
+            color:rgba(0,0,0,0.5);
+            margin-left:8px;
+            margin-right:8px;
+            text-decoration:none;
+            width:auto;
+
+            
+
+            &:nth-child(2){
+                margin-left:0;
+            }
+
+        }
+
+        .breadcrumb-connector{
+            display:inline;
+            height:20px;
+            padding:0;
+            transform:translate3d(0, -7px, 0);
+            width:20px;
+
+            &:first-child{
+                display:none;
+            }
+
+            svg{
+                fill:#8f9ca8;
+            }
+        }
+
+        span{
+            align-items:center;
+            display:flex;
+            flex-wrap:wrap;
+
+            &>span{
+                display:inline-block;
+                margin-bottom:10px;
+
+                &:last-child{
+                    background:white;
+                    outline:8px solid rgba(255, 194, 148, 0.5);
+                    border-radius:50px;
+                    color:#26465f;
+                    font-family:'Powerr';
+                    margin-left:10px;
+                    margin-right:0px;
+                    overflow:hidden;
+                    padding:9px 44px 8px;
+                    pointer-events:none;
+                    position:relative;
+                    white-space:nowrap;
+
+                    &:before{
+                        border:2px solid #ffc294;
+                        border-radius:50px;
+                        content:'';
+                        height:100%;
+                        left:0;
+                        position:absolute;
+                        top:0;
+                        width:100%;
+                    }
+                }
+            }
+                
         }
     }
 }

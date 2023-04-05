@@ -22,7 +22,7 @@ $grid-breakpoints: (
   md: 900px,
   lg: 1000px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1900px
 );
 
 $custom-colors: (
@@ -39,6 +39,12 @@ $theme-colors: map-merge( $custom-colors, $theme-colors);
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 
+@media (min-width:1900px){
+    .container.xxl, .container.xl, .container.md, .container.sm, .container{
+        max-width:1574px;
+    }
+}
+
 /*
 SANYGEN
 */
@@ -50,4 +56,6 @@ SANYGEN
 @import '_category';
 @import '_standardpage';
 @import '_searchresults';
+@import '_products';
+@import '_productdetail';
 

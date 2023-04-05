@@ -14,66 +14,242 @@ main.search-results{
         }
 
         h1{
-            margin-top:2em;
+            margin-top:235px;
             position:relative;
         }
     }
-    .breadcrumbs{
 
-        a,a:visited,a:active{
-            font-family:'Powerr';
-            font-size:16px;
-            color:#8f9ca8;
-            margin-left:8px;
-            margin-right:8px;
-            text-decoration:none;
-            width:auto;
+    .content-container{
+        padding-bottom:158px;
+        padding-top:50px;
+        position:relative;
 
-            
+        .bg{
+            display:flex;
+            height:100%;
+            left:0;
+            position:absolute;
+            top:0;
+            width:100%;
 
-            &:nth-child(2){
-                margin-left:0;
+            .left{
+                height:100%;
+                width:50%;
+            }
+            .right{
+                height:100%;
+                width:50%;
             }
 
-            &:last-child{
-                border:8px solid #fff1e6;
-                border-radius:50px;
-                color:#26465f;
-                margin-right:0;
-                overflow:hidden;
-                padding:8px 44px;
-                pointer-events:none;
-                position:relative;
+        }
 
+        .product-content{
+            position:relative;
 
-                &:before{
-                    border:2px solid #ffc294;
-                    border-radius:50px;
-                    content:'';
-                    height:100%;
-                    left:0;
-                    position:absolute;
-                    top:0;
+            .d-grid{
+                gap:15px;
+                grid-template-columns: repeat(1, 1fr);
+
+                .item{
+                    background:rgba(255, 255,255,0.8);
+                    border:none;
+                    flex-direction:column;
+                    outline:1px solid rgba(0,0, 0, 0.25);
+                    border-radius:20px;
+                    justify-content:start;
+                    overflow:hidden;
+                    padding:30px 18px;
+                    position:relative;
+                    text-align:center;
+                    text-decoration:none;
+                    transition:250ms border, 250ms outline;
                     width:100%;
+        
+                    &:before{
+                        border:2px solid #ffc294;
+                        border-radius:20px;
+                        content:'';
+                        height:100%;
+                        left:0;
+                        opacity:0;
+                        position:absolute;
+                        top:0;
+                        width:100%;
+                        z-index:10;
+                    }
+
+            
+                    &:hover{
+                        
+                        outline:8px solid rgba(255, 194, 148, 0.5);
+                        
+                        &:before{
+                            opacity:1;
+                        }
+                        
+                    }
+
+                    p{
+                        margin-top:38px;
+                    }
+                }
+
+            }
+        }
+
+        .pagination{
+            margin-top:50px;
+            position:relative;
+
+            .navigation{
+                width:100%;
+
+                ul{
+                    align-items:center;
+                    display:flex;
+                    list-style-type:none;
+                    margin:0;
+                    padding:0;
+
+                    li{
+                        a.arrow{
+                            background:url(/wp-content/uploads/2023/04/carousel-arrow.svg)no-repeat center;
+                            background-size:contain;
+                            display:block;
+                            height:30px;
+                            outline:none;
+                            width:18px;
+
+                            &:before{
+                                content:none;
+                            }
+
+                            &.prev{
+                                transform:rotate(180deg);
+                            }
+                        }
+
+                        a{
+                            align-items:center;
+                            background:white;
+                            border-radius:50px;
+                            color:#26465f;
+                            display:flex;
+                            font-family:'Powerr';
+                            font-size:25px;
+                            height:54px;
+                            justify-content:center;
+                            margin:0 11px;
+                            outline:1px solid #E0E0E0;
+                            position:relative;
+                            text-decoration:none;
+                            transition:250ms outline;
+                            width:54px;
+
+                            &:before{
+                                border:2px solid #ffc294;
+                                border-radius:50px;
+                                content:'';
+                                height:100%;
+                                left:0;
+                                opacity:0;
+                                position:absolute;
+                                top:0;
+                                width:100%;
+                            }
+
+                            span{
+                                opacity:0.5;
+                                transform:translate3d(0, 2px, 0);
+                            }
+                        }
+
+                        &.active,
+                        &:hover{
+                            a{
+                                outline:8px solid rgba(255, 194, 148, 0.5);
+
+                                &:before{
+                                    opacity:1;
+                                }
+
+                                span{
+                                    opacity:1;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
 
-        .breadcrumb-connector{
-            height:20px;
-            padding:0;
-            transform:translate3d(0, -4px, 0);
-            width:20px;
-
-            &:first-child{
-                display:none;
-            }
-
-            svg{
-                fill:#8f9ca8;
-            }
-        }
     }
+    
 
     .no-results{}
 }
+
+
+@media screen and (min-width:700px){
+    main.search-results{
+        .content-container{
+
+            .bg{
+    
+                .left{
+                    background:url(/wp-content/uploads/2023/03/home-related-industries-bg.jpg)no-repeat 40% 0 white;
+                    background-size:auto 100%;
+                }
+                .right{
+                    background:url(/wp-content/uploads/2023/03/home-related-resources-bg.jpg)no-repeat 48% 0 white;
+                    background-size:auto 100%;
+                }
+    
+            }
+
+            .product-content{
+                .d-grid{
+                    grid-template-columns: repeat(2, 1fr);
+
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width:900px){
+    main.search-results{
+        .content-container{
+            .product-content{
+                .d-grid{
+                    grid-template-columns: repeat(3, 1fr);
+
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (min-width:1200px){
+    main.search-results{
+        .content-container{
+
+            .bg{
+    
+                .left{
+                    background:url(/wp-content/uploads/2023/03/home-related-industries-bg.jpg)no-repeat 25% 0 white;
+                    background-size:auto 100%;
+                }
+                .right{
+                    background:url(/wp-content/uploads/2023/03/home-related-resources-bg.jpg)no-repeat 50% 0 white;
+                    background-size:auto 100%;
+                }
+    
+            }
+        }
+    }
+}
+

@@ -14,8 +14,19 @@ get_header();
 
 	<section class="hero container-fluid d-flex justify-content-center align-items-start" style="background:url(/wp-content/uploads/2023/03/header-image-1.jpg)no-repeat center top; background-size:cover;">
 		<div class="hero-bg" style="background:url(/wp-content/uploads/2023/03/header-decor.svg)no-repeat center top; background-size:cover;"></div>
-		<h1 class="header text-darkblue"><?php echo single_cat_title(); ?></h1>
+		<h1 class="header text-darkblue auto-category"><?php echo single_cat_title(); ?></h1>
 	</section>	
+	<section class="category-subnav container-fluid">
+		<div class="row">
+	<?php 
+	wp_nav_menu( [ 
+		'theme_location'	=> 'productsubnav',
+		'link_before'		=> '<div class="selected-icon"><img src="/wp-content/uploads/2023/03/product-subnav-selected-icon.svg" alt=""></div><div class="icon"></div><div class="label text-white">',
+		'link_after'		=> '</div>'
+	] ); 
+	?>
+		</div>
+	</section>
 
 	<div class="breadcrumbs container subnavPadding">
 		<div class="row d-flex flex-row justify-content-start align-items-center">
@@ -31,7 +42,6 @@ get_header();
 
 	<script>
 		const breadcrumbs = document.querySelectorAll('.breadcrumbs #breadcrumbs>span span ');
-		console.log('breadcrumbs', breadcrumbs);
 
 		for(let i = 0; i < breadcrumbs.length; i++){
 			const bc = breadcrumbs[i];
@@ -67,7 +77,13 @@ get_header();
 		$category = get_category( get_query_var( 'cat' ) );
 		$cat_id = $category->cat_ID;
 
-		$catPost = get_posts( $cat_id );
+		$cat_args = array(
+			'posts_per_page'	=> -1,
+			'category'			=> $cat_id
+		);
+
+		//$catPost = get_posts( $cat_id );
+		$catPost = get_posts( $cat_args );
 
 
 		foreach( $catPost as $cpost){
@@ -79,7 +95,6 @@ get_header();
 			</div>
 			<div class="product-title justify-content-center">
 				<div class="rounded">
-				<!-- Generator: Adobe Illustrator 27.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					viewBox="0 0 370.4 29.7" style="enable-background:new 0 0 370.4 29.7;" xml:space="preserve">
 				<style type="text/css">

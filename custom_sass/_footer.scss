@@ -29,9 +29,9 @@ footer{
     }
 
     .phone-numbers{
-        #menu-phone-numbers, #menu-phone-numbers-1{
+        #menu-footer-phone-numbers, #menu-phone-numbers-1{
             .menu-item{
-                text-align:right;
+                text-align:center;
 
                 a{
                     font-weight:600;
@@ -169,11 +169,16 @@ footer{
 }
 
 
+
 @media screen and (min-width:900px){
     footer{
-        #menu-phone-numbers, #menu-phone-numbers-1{
+        #menu-footer-phone-numbers, #menu-phone-numbers-1{
             display:flex;
             justify-content:space-between;
+            
+            .menu-item{
+                text-align:right;
+            }
         }
     }
 }
@@ -181,7 +186,7 @@ footer{
 
 @media screen and (min-width:1200px){
     footer{
-        #menu-phone-numbers, #menu-phone-numbers-1{
+        #menu-footer-phone-numbers, #menu-phone-numbers-1{
             display:flex;
             flex-direction:column;
             justify-content:start;

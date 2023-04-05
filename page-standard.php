@@ -11,7 +11,7 @@ get_header();
 
 		<section class="hero container-fluid d-flex justify-content-center align-items-start" style="background:url(<?php echo get_field('header_background'); ?>)no-repeat center top; background-size:cover;">
 			<div class="hero-bg" style="background:url(<?php echo get_field('header_decorative_image'); ?>)no-repeat center top; background-size:cover;"></div>
-			<h1 class="header text-darkblue"><?php echo get_field('header_text'); ?></h1>
+			<h1 class="header text-darkblue standard"><?php echo get_field('header_text'); ?></h1>
 		</section>
 
 		<?php
@@ -83,7 +83,9 @@ get_header();
 		</section>
 			<?php
 			}
-			
+			?>
+			<div class="flexible-content-container container-fluid">
+			<?php
 			$firstRun = true;
 			if( have_rows('content') ){
 
@@ -99,23 +101,41 @@ get_header();
 					if(get_row_layout() == 'breadcrumbs'):
 			?>
 
+		
 		<section class="breadcrumbs container flexible-content <?php echo $addMarginTop; ?>">
 			<div class="row d-flex flex-row justify-content-start align-items-center">
+				<div id="breadcrumbs">
+					<span>
 						<?php
 						$crumbs = get_sub_field('crumbs');
 
+						$crumbsMax = count($crumbs);
+
+						$crumbsIndex = 0;
+
 						foreach($crumbs as $crumb){
 						?>
-				<div class="breadcrumb-connector">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-					</svg>
-				</div>
-
-				<a href="<?php echo $crumb['crumb_url'] ?>" class="crumb"><?php echo $crumb['crumb_text'] ?></a>
+							<div class="breadcrumb-connector">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+								</svg>
+							</div>
+							<?php if($crumbsIndex == $crumbsMax - 1){ ?>
+								<span class="breadcrumb_last"><?php echo $crumb['crumb_text'] ?></span>
+							<?php }else{?>
+								<span><a href="<?php echo $crumb['crumb_url'] ?>"><?php echo $crumb['crumb_text'] ?></a></span>
+							<?php } ?>
+				
 				
 
-				<?php }?>
+				<?php
+						$crumbsIndex++;
+						
+						
+					}
+				?>
+					</span>
+				</div>
 			</div>
 		</section>
 
@@ -180,11 +200,11 @@ get_header();
 						<div class="container">
 							<div class="row d-flex justify-content-start">
 
-								<div class="left col-12 col-md-6">
+								<div class="left col-12 col-md-7">
 									<h2 class="header text-darkblue"><?php echo get_sub_field('journey_title'); ?></h2>
-									<p class="text-darkblue"><?php echo get_sub_field('journey_description'); ?></p>
+									<div class="text-darkblue"><?php echo get_sub_field('journey_description'); ?></div>
 
-									<div class="container">
+									<div class="gallery-container">
 
 
 									<div class="gallery-player container p-0">
@@ -215,7 +235,7 @@ get_header();
 									</div>
 								</div>
 
-								<div class="right col-12 col-md-6 d-flex flex-columns align-items-center">
+								<div class="right col-12 col-md-5 d-flex flex-columns align-items-center">
 									<div class="timeline-content centering">
 										<div class="timeline-bottom">
 											<?php
@@ -286,12 +306,12 @@ get_header();
 			
 					<section class="related-articles container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
 						<div class="container">
-							<div class="header-container col-8 offset-2 col-lg-4 offset-lg-4">
-								<h3 class="home-category-header text-darkblue"><?php echo get_sub_field('related_title'); ?></h3>
-								<p class="home-category-header text-darkblue"><?php echo get_sub_field('related_description'); ?></p>
+							<div class="header-container col-8 offset-2 col-lg-8 offset-lg-2 d-flex flex-column align-items-center">
+								<h2 class="header home-category-header text-darkblue"><?php echo get_sub_field('related_title'); ?></h2>
+								<div class="home-category-header text-darkblue description"><?php echo get_sub_field('related_description'); ?></div>
 
 								<?php if( get_sub_field('related_show_cta') === true ){ ?>
-								<a href="<?php echo get_sub_field('cta_url'); ?>" class="link text-darkblue"><?php echo get_sub_field('related_cta_text'); ?></a>
+								<a href="<?php echo get_sub_field('cta_url'); ?>" class="bold link text-transform-unset text-darkblue"><?php echo get_sub_field('related_cta_text'); ?></a>
 								<?php } ?>
 							</div>
 
@@ -332,7 +352,7 @@ get_header();
 
 									foreach($items as $item){
 								?>
-									<a href="<?php echo $item['related_link_url'] ?>" class="img-link col-3 d-flex flex-column justify-content-start">
+									<a href="<?php echo $item['related_link_url'] ?>" class="img-link col-md-4 d-flex flex-column justify-content-start">
 										<h4 class="header darkblue"><?php echo $item['title'] ?></h4>
 										<p class="header darkblue"><?php echo $item['description'] ?></p>
 									</a>
@@ -362,21 +382,21 @@ get_header();
 					?>
 			
 					<section class="spotlight container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
-						<div class="container">
-							<div class="header-container col-12 col-sm-6">
-								<h3 class="home-category-header text-darkblue"><?php echo get_sub_field('spotlight_title'); ?></h3>
-								<p class="home-category-header text-darkblue"><?php echo get_sub_field('spotlight_description'); ?></p>
+						<div class="container-fluid container-md">
+							<div class="header-container col-12 col-md-6">
+								<h1 class="home-category-header text-darkblue"><?php echo get_sub_field('spotlight_title'); ?></h1>
+								<div class="description home-category-header text-darkblue"><?php echo get_sub_field('spotlight_description'); ?></div>
 							</div>
 
-							<div class="items row">
+							<div class="items row d-flex flex-column flex-sm-row justify-content-center">
 								<?php
 									$items = get_sub_field('spotlight_items');
 
 									foreach($items as $item){
 								?>
-									<div class="spotlight-card col-4 background-white">
+									<div class="spotlight-card col-6 background-white">
 										<h4 class="product-name text-darkblue"><?php echo $item['spotlight_item_title']; ?></h4>
-										<p class="text-darkblue"><?php echo $item['spotlight_item_description']; ?></p>
+										<div class="item-description text-darkblue"><?php echo $item['spotlight_item_description']; ?></div>
 										<a href="<?php echo $item['spotlight_item_cta_url']; ?>" class="cta-solid-pill background-orange text-darkblue"><?php echo $item['spotlight_item_cta_text']; ?></a>
 									</div>
 								<?php
@@ -409,7 +429,7 @@ get_header();
 							<div class="row d-flex flex-rows">
 								<div class="container col-md-6 left">
 									<h2 class="header darkblue"><?php echo get_sub_field('contact_title'); ?></h2>
-									<p class="darkblue"><?php echo get_sub_field('contact_description'); ?></p>
+									<div class="description darkblue"><?php echo get_sub_field('contact_description'); ?></div>
 									<h3 class="home-category-header darkblue"><?php echo get_sub_field('contact_listing_text'); ?></h3>
 									<h4 class="product-name darkblue"><?php echo get_sub_field('contact_name'); ?></h4>
 
@@ -481,12 +501,12 @@ get_header();
 						};
 						?>
 	
-						<section class="accordian_group container-fluid flexible-content pt-5 pb-5 <?php echo $addMarginTop; ?>"<?php echo $styleString; ?>>
+						<section class="accordian_group container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString; ?>>
 							<div class="container">
-								<div class="row d-flex flex-rows">
-									<div class="container col-sm-6 d-flex flex-column">
+								<div class="row d-flex">
+									<div class="header-container container col-md-6 d-flex flex-column">
 										<h2 class="header darkblue"><?php echo get_sub_field('accordian_title'); ?></h2>
-										<p class="darkblue"><?php echo get_sub_field('accordian_description'); ?></p>
+										<div class="description darkblue"><?php echo get_sub_field('accordian_description'); ?></div>
 									</div>
 
 									<div class="container">
@@ -541,58 +561,58 @@ get_header();
 
 											</div>
 
-												<script>
+<script>
 
-													// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
-													const accordionItems = document.querySelectorAll('.accordian_group .accordion .accordion-header');
-													const accordionCollapseItems = document.querySelectorAll('.accordian_group .accordion .accordion-collapse');
-													
-													// activate all headers
-													for(let i = 0; i < accordionItems.length; i++){
-														const header = accordionItems[i];
-														const collapse = accordionCollapseItems[i];
+	// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
+	const accordionItems = document.querySelectorAll('.accordian_group .accordion .accordion-header');
+	const accordionCollapseItems = document.querySelectorAll('.accordian_group .accordion .accordion-collapse');
+	
+	// activate all headers
+	for(let i = 0; i < accordionItems.length; i++){
+		const header = accordionItems[i];
+		const collapse = accordionCollapseItems[i];
 
-														collapse.style.height = 0;
+		collapse.style.height = 0;
 
-														if(i == 0){
-															const openInitialContent = document.querySelector('.accordian_group .accordion #collapse-0 .accordion-body');
-															collapse.style.height = (openInitialContent.clientHeight + 32 + 54) + 'px';
-														}
-														
-														header.addEventListener('click', (evt) => {
+		if(i == 0){
+			const openInitialContent = document.querySelector('.accordian_group .accordion #collapse-0 .accordion-body p');
+			collapse.style.height = (openInitialContent.clientHeight + 50) + 'px';
+		}
+		
+		header.addEventListener('click', (evt) => {
 
-															// Close current
-															const prev = document.querySelector('.accordian_group .accordion .accordion-collapse.show');
+			// Close current
+			const prev = document.querySelector('.accordian_group .accordion .accordion-collapse.show');
 
-															prev.style.height = 0;
-															
-															// .selected item
-															const prevSelected = document.querySelector('.accordian_group .accordion  .selected');
+			prev.style.height = 0;
+			
+			// .selected item
+			const prevSelected = document.querySelector('.accordian_group .accordion  .selected');
 
-															if(prev){
-																prev.classList.remove('show');
+			if(prev){
+				prev.classList.remove('show');
 
-																prevSelected.classList.remove('selected');
-															}
+				prevSelected.classList.remove('selected');
+			}
 
-															// Open Current
-															const openTarget = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget);
-															
-															openTarget.classList.add('show');
+			// Open Current
+			const openTarget = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget);
+			
+			openTarget.classList.add('show');
 
-															const openContent = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body');
+			const openContent = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body p');
 
-															openTarget.style.height = (openContent.clientHeight + 32 + 54) + 'px' ;
+			openTarget.style.height = (openContent.clientHeight + 50) + 'px' ;
 
-															// assign .selected
-															const openItem = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.accordionItem);
-															openItem.classList.add('selected');
+			// assign .selected
+			const openItem = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.accordionItem);
+			openItem.classList.add('selected');
 
-															
-														});
-													}
-													
-												</script>
+			
+		});
+	}
+	
+</script>
 
 
 										</div>
@@ -622,12 +642,14 @@ get_header();
 						<?php
 							// FLIP Sides if image_side = "right"
 							$flip = '';
+							$flipmd = 'flex-md-row';
 							if(get_sub_field('image_side') === 'Right'){
 								$flip = 'flex-row-reverse';
+								$flipmd = 'flex-md-row-reverse';
 							}
 						?>
-							<div class="row col-12 <?php echo $flip; ?>">
-								<div class="left col-6 d-flex align-items-center">
+							<div class="row col-12 <?php echo $flip; ?> flex-column <?php echo $flipmd; ?>">
+								<div class="left col-md-6 d-flex align-items-center">
 									<div class="halfhalf-background" style="background:url(<?php echo get_sub_field('background_shape'); ?>)no-repeat center;background-size:contain;"></div>
 
 									<div class="halfhalf-player container p-0">
@@ -636,11 +658,11 @@ get_header();
 
 									</div>
 								</div>
-								<div class="right col-6">
+								<div class="right col-md-5 offset-md-1">
 									<div class="container">
 										<img src="<?php echo get_sub_field('icon'); ?>" alt="" class="stamp">
 										<h2 class="header text-darkblue"><?php echo get_sub_field('title'); ?></h2>
-										<p class="text-darkblue"><?php echo get_sub_field('description'); ?></p>
+										<div class="description text-darkblue"><?php echo get_sub_field('description'); ?></div>
 
 										<?php if(get_sub_field('display_cta') === true){
 										?>
@@ -669,18 +691,18 @@ get_header();
 						<section class="text_card_carousel container-fluid d-flex justify-content-center">
 				
 							<div class="container d-flex p-0">
-								<div class="row col-12 ">
+								<div class="carousel-container row col-12 ">
 									<div class="arrow-container col-1 d-flex justify-content-center align-items-center p-0">
 										<div class="glider-arrow glider-prev"></div>
 									</div>
-									<div class="cards col-10">
+									<div class="cards col-10 p-0">
 										<?php 
 
 										foreach( get_sub_field('text_cards') as $item ){
 										?>
-										<div class="card col-4">
+										<div class="card">
 											<h4 class="header darkblue"><?php echo $item['title']; ?></h4>
-											<p class="darkblue"><?php echo $item['description']; ?></p>
+											<div class="description darkblue"><?php echo $item['description']; ?></div>
 										</div>
 
 										<?php
@@ -752,58 +774,58 @@ get_header();
 
 												</div>
 
-													<script>
+<script>
 
-														// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
-														const accordionItems = document.querySelectorAll('.accordian_group_full_width .accordion .accordion-header');
-														const accordionCollapseItems = document.querySelectorAll('.accordian_group_full_width .accordion .accordion-collapse');
-														
-														// activate all headers
-														for(let i = 0; i < accordionItems.length; i++){
-															const header = accordionItems[i];
-															const collapse = accordionCollapseItems[i];
+// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
+const accordionItems = document.querySelectorAll('.accordian_group_full_width .accordion .accordion-header');
+const accordionCollapseItems = document.querySelectorAll('.accordian_group_full_width .accordion .accordion-collapse');
 
-															collapse.style.height = 0;
+// activate all headers
+for(let i = 0; i < accordionItems.length; i++){
+	const header = accordionItems[i];
+	const collapse = accordionCollapseItems[i];
 
-															if(i == 0){
-																const openInitialContent = document.querySelector('.accordian_group_full_width .accordion #collapse-0 .accordion-body');
-																collapse.style.height = (openInitialContent.clientHeight + 32 + 54) + 'px';
-															}
-															
-															header.addEventListener('click', (evt) => {
+	collapse.style.height = 0;
 
-																// Close current
-																const prev = document.querySelector('.accordian_group_full_width .accordion .accordion-collapse.show');
+	if(i == 0){
+		const openInitialContent = document.querySelector('.accordian_group_full_width .accordion #collapse-0 .accordion-body p');
+		collapse.style.height = (openInitialContent.clientHeight + 50) + 'px';
+	}
+	
+	header.addEventListener('click', (evt) => {
 
-																prev.style.height = 0;
-																
-																// .selected item
-																const prevSelected = document.querySelector('.accordian_group_full_width .accordion  .selected');
+		// Close current
+		const prev = document.querySelector('.accordian_group_full_width .accordion .accordion-collapse.show');
 
-																if(prev){
-																	prev.classList.remove('show');
+		prev.style.height = 0;
+		
+		// .selected item
+		const prevSelected = document.querySelector('.accordian_group_full_width .accordion  .selected');
 
-																	prevSelected.classList.remove('selected');
-																}
+		if(prev){
+			prev.classList.remove('show');
 
-																// Open Current
-																const openTarget = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget);
-																
-																openTarget.classList.add('show');
+			prevSelected.classList.remove('selected');
+		}
 
-																const openContent = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body');
+		// Open Current
+		const openTarget = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget);
+		
+		openTarget.classList.add('show');
 
-																openTarget.style.height = (openContent.clientHeight + 32 + 54) + 'px' ;
+		const openContent = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body p');
 
-																// assign .selected
-																const openItem = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.accordionItem);
-																openItem.classList.add('selected');
+		openTarget.style.height = (openContent.clientHeight + 50) + 'px' ;
 
-																
-															});
-														}
-														
-													</script>
+		// assign .selected
+		const openItem = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.accordionItem);
+		openItem.classList.add('selected');
+
+		
+	});
+}
+
+</script>
 
 
 											</div>
@@ -827,14 +849,15 @@ get_header();
 							
 							?>
 		
-						<section class="full-width_poster_half_text container-fluid d-flex justify-content-center align-items-start <?php echo $addMarginTop; ?>" style="background:url(<?php echo get_sub_field('image'); ?>)no-repeat center top; background-size:cover;">
-							<div class="hero-bg" style="background:url(<?php echo get_sub_field('decor'); ?>)no-repeat center top; background-size:cover;"></div>
+						<section class="full-width_poster_half_text container-fluid d-flex justify-content-center align-items-start <?php echo $addMarginTop; ?>">
+							<div class="bg d-none d-md-block" style="background:url(<?php echo get_sub_field('image'); ?>)no-repeat center top; background-size:cover;"></div>
+							<div class="hero-bg d-none d-md-block" style="background:url(<?php echo get_sub_field('decor'); ?>)no-repeat center right; background-size:auto 100%;"></div>
 
 							<div class="container">
 								<div class="row">
 									<div class="col-md-6">
 										<h2 class="header text-darkblue"><?php echo get_sub_field('title'); ?></h2>
-										<p class="text-darkblue"><?php echo get_sub_field('description_text'); ?></p>
+										<div class="description text-darkblue"><?php echo get_sub_field('description_text'); ?></div>
 
 										<a href="<?php echo get_sub_field('cta_url'); ?>" class="cta-solid-pill background-orange text-darkblue"><?php echo get_sub_field('cta_text'); ?></a>
 									</div>
@@ -858,17 +881,17 @@ get_header();
 
 							?>
 		
-						<section class="team_cards container d-grid" >
+						<section class="team_cards container-fluid container-md d-grid" >
 							<?php
 								$index = 1;
 								foreach($cards as $card){
 							?>
 
-									<div class="container col-md-3" style="background:url(<?php echo get_sub_field('card_background'); ?>)no-repeat center;background-size:cover;">
+									<div class="container" style="background:url(<?php echo get_sub_field('card_background'); ?>)no-repeat center;background-size:cover;">
 										<h3 class="text-darkblue"><?php echo $index;  ?></h3>
 										<h1 class="periodic text-darkblue"><?php echo $card['initials']; ?></h1>
-										<h4 class="header text-darkblue"><?php echo $card['name']; ?></h4>
-										<h3 class="text-darkblue"><?php echo $card['position']; ?></h3>
+										<h4 class="text-darkblue"><?php echo $card['name']; ?></h4>
+										<h3 class="position text-darkblue"><?php echo $card['position']; ?></h3>
 									</div>
 							<?php
 									$index++;
@@ -894,18 +917,18 @@ get_header();
 						<section class="header_steps container-fluid d-flex flex-column justify-content-center <?php echo $addMarginTop; ?>" style="background:url(<?php echo get_sub_field('background_image'); ?>)no-repeat center top; background-size:cover;">
 							
 
-							<div class="main-panel-container container" style="background:url(<?php echo get_sub_field('main_image'); ?>)no-repeat center; background-size:cover;">
-								<div class="main-panel row d-flex flex-row justify-content-center">
-									<div class="left col-6">
+							<div class="main-panel-container container-xl" style="background:url(<?php echo get_sub_field('main_image'); ?>)no-repeat center; background-size:cover;">
+								<div class="main-panel row d-flex flex-column flex-xl-row  justify-content-center">
+									<div class="left col-xl-6">
 										<h2 class="header text-darkblue"><?php echo get_sub_field('title'); ?></h2>
 										<p class="text-darkblue"><?php echo get_sub_field('main_description'); ?></p>
 									</div>
 
-									<div class="right col-6"><img src="<?php echo get_sub_field('guarantee_stamp'); ?>" alt=""></div>
+									<div class="right col-sm-6 offset-sm-6 offset-xl-0"><img src="<?php echo get_sub_field('guarantee_stamp'); ?>" alt=""></div>
 								</div>
 							</div>
 
-							<div class="steps container d-grid">
+							<div class="steps container-fluid container-lg d-grid">
 								<?php
 								if( get_sub_field('steps') ){
 
@@ -945,7 +968,7 @@ get_header();
 
 
 
-
+		</div>
 
 
 	</main><!-- #main -->
