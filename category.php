@@ -58,18 +58,6 @@ get_header();
 		}
 	</script>
 
-<!--  NEEDS TO BE INJECTED INTO EVERY <a> tag in the :before position
-
-
-		<div class="breadcrumb-connector">
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-			</svg>
-		</div>
-
-		add .crumb to tag of link
--->
-
 
 	<div class="gallery-items container d-grid justify-content-start">
 		<?php
@@ -77,12 +65,15 @@ get_header();
 		$category = get_category( get_query_var( 'cat' ) );
 		$cat_id = $category->cat_ID;
 
+		if($cat_id === 13){
+			$cat_id = 0;
+		}
+
 		$cat_args = array(
 			'posts_per_page'	=> -1,
 			'category'			=> $cat_id
 		);
 
-		//$catPost = get_posts( $cat_id );
 		$catPost = get_posts( $cat_args );
 
 

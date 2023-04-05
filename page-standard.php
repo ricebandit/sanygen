@@ -305,7 +305,7 @@ get_header();
 					?>
 			
 					<section class="related-articles container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
-						<div class="container">
+						<div class="container-fluid container-lg">
 							<div class="header-container col-8 offset-2 col-lg-8 offset-lg-2 d-flex flex-column align-items-center">
 								<h2 class="header home-category-header text-darkblue"><?php echo get_sub_field('related_title'); ?></h2>
 								<div class="home-category-header text-darkblue description"><?php echo get_sub_field('related_description'); ?></div>
@@ -315,7 +315,7 @@ get_header();
 								<?php } ?>
 							</div>
 
-							<div class="items row">
+							<div class="items d-flex flex-row col-8 offset-2">
 								<?php
 									$items = get_sub_field('related_links');
 
@@ -397,7 +397,7 @@ get_header();
 									<div class="spotlight-card col-6 background-white">
 										<h4 class="product-name text-darkblue"><?php echo $item['spotlight_item_title']; ?></h4>
 										<div class="item-description text-darkblue"><?php echo $item['spotlight_item_description']; ?></div>
-										<a href="<?php echo $item['spotlight_item_cta_url']; ?>" class="cta-solid-pill background-orange text-darkblue"><?php echo $item['spotlight_item_cta_text']; ?></a>
+										<a href="<?php echo $item['spotlight_item_cta_url']; ?>" class="pill-cta orange background-orange text-darkblue"><?php echo $item['spotlight_item_cta_text']; ?></a>
 									</div>
 								<?php
 									}
