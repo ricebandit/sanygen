@@ -16,19 +16,19 @@
 
 			<div class="row pb-5 pt-5">
 				<div class="col-6 mb-4 order-2 col-md-3 col-xl-2 order-xl-1 col-xxl-2">
-					<p class="p-lg">PRODUCTS</p>
+					<p class="p-lg"><a href="/products/all-products/">PRODUCTS</a></p>
 					<?php wp_nav_menu( array( 'theme_location' => 'products' ) ); ?>
 				</div>
 				<div class="col-6 mb-4 order-3 col-md-3 col-xl-2 order-xl-2 col-xxl-2">
-					<p class="p-lg">ABOUT US</p>
+					<p class="p-lg"><a href="/about-us/">ABOUT US</a></p>
 					<?php wp_nav_menu( array( 'theme_location' => 'aboutus' ) ); ?>
 				</div>
 				<div class="col-6 mb-4 order-4 col-md-3 col-xl-2 order-xl-3 col-xxl-2">
-					<p class="p-lg">RESOURCES</p>
+					<p class="p-lg"><a href="/resources/">RESOURCES</a></p>
 					<?php wp_nav_menu( array( 'theme_location' => 'resources' ) ); ?>
 				</div>
 				<div class="col-6 mb-4 order-5 col-md-3 col-xl-2 order-xl-4 col-xxl-2">
-					<p class="p-lg">CONTACT US</p>
+					<p class="p-lg"><a href="/contact-us/">CONTACT US</a></p>
 					<?php wp_nav_menu( array( 'theme_location' => 'contact' ) ); ?>
 				</div>
 				<div class="phone-numbers container mb-3 mt-3 order-1 col-xl-4 order-xl-5 mt-xl-0">

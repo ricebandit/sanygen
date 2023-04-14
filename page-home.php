@@ -26,7 +26,7 @@ get_header();
 		<div class="container-fluid">
 			<div class="col-lg-6 offset-lg-1 col-xxl-4 offset-xxl-2 d-flex align-items-start flex-column">
 				<h2 class="header text-darkblue"><?php echo get_field('products_title'); ?></h2>
-				<p><?php echo get_field('products_description'); ?></p>
+				<div class="description text-darkblue"><?php echo get_field('products_description'); ?></div>
 
 				<a href="<?php echo get_field('products_cta_url'); ?>" class="pill-cta orange"><?php echo get_field('products_cta_text'); ?></a>
 			</div>
@@ -65,7 +65,7 @@ get_header();
 	<section class="guarantee container-fluid d-flex justify-content-center" style="background:url(<?php echo get_field('guarantee_background'); ?>)no-repeat center;background-size:cover;">
 		
 		<div class="container-fluid">
-			<div class="row d-flex flex-column flex-md-row">
+			<div class="row d-flex flex-column flex-md-row col-xxl-10 offset-xxl-1 mt-md-5 mb-md-5">
 				<div class="left col-md-6 d-flex align-items-center">
 					<div class="gallery-background" style="background:url(<?php echo get_field('guarantee_gallery_bg'); ?>)no-repeat center;background-size:contain;"></div>
 
@@ -124,7 +124,7 @@ get_header();
 						</div>
 						<div class="col-9">
 							<h3 class="home-category-header text-darkblue"><?php echo get_field('related_links')[0]['link_title']; ?></h3>
-							<p class="text-darkblue"><?php echo get_field('related_links')[0]['link_description']; ?></p>
+							<div class="text-darkblue"><?php echo get_field('related_links')[0]['link_description']; ?></div>
 							<a href="<?php echo get_field('related_links')[0]['link_cta_url']; ?>" class="link text-darkblue"><?php echo get_field('related_links')[0]['link_cta_text']; ?></a>
 						</div>
 					</div>
@@ -136,7 +136,7 @@ get_header();
 						</div>
 						<div class="col-9">
 							<h3 class="home-category-header text-darkblue"><?php echo get_field('related_links')[1]['link_title']; ?></h3>
-							<p class="text-darkblue"><?php echo get_field('related_links')[1]['link_description']; ?></p>
+							<div class="text-darkblue"><?php echo get_field('related_links')[1]['link_description']; ?></div>
 							<a href="<?php echo get_field('related_links')[1]['link_cta_url']; ?>" class="link text-darkblue"><?php echo get_field('related_links')[1]['link_cta_text']; ?></a>
 						</div>
 					</div>

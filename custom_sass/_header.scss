@@ -6,20 +6,15 @@
 
     .desktop.container-fluid{
         &:before{
-            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.9+0,0.8+43,0+100 */
-            background: -moz-linear-gradient(top,  rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 43%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(top,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.8) 43%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.8) 43%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
-
+            background:white;
             content:'';
-            height:250px;
+            height:120px;
             left:0;
             opacity:1;
             pointer-events:none;
             position:absolute;
             top:0;
-            transition:1200ms opacity;
+            transition:400ms opacity;
             width:100%;
         }
     }
@@ -44,6 +39,7 @@
 
     .logo{
         margin-top:15px;
+        transition:250ms all;
         width:200px;
 
         a{
@@ -215,7 +211,8 @@
                         color:#7c93ab;
                         font-size:18px;
                         margin-right:auto;
-                        padding:0px 6px;
+                        line-height:1;
+                        padding:7px 6px 6px;
                         white-space:nowrap;
                         width:auto;
 
@@ -266,7 +263,7 @@
 @media screen and (min-width:900px){
     .site-header{
         .logo{
-            align-items:end;
+            align-items:center;
             display:flex;
             transform:translate3d(0, 0, 0);
             width:200px;
@@ -281,6 +278,7 @@
 @media screen and (min-width:1000px){
     .site-header{
         .logo{
+            padding-left:50px;
             width:289px;
         }
 
@@ -297,7 +295,9 @@
 @media screen and (min-width:1300px){
     .site-header{
         .logo{
-            transform:translate3d(0, 61px, 0);
+            margin-top:0;
+            transform:translate3d(0, 0, 0);
+            width:240px;
         }
 
         .menu-main-nav-container{
@@ -314,7 +314,24 @@
             margin:29px 0 34px 0;
         }
 
+
+        .desktop.container-fluid{
+            &:before{
+                height:140px;
+            }
+        }
+
+        &.topscroll{
+            .desktop.container-fluid{
+                .logo{
+                    margin-top:15px;
+                    transform:translate3d(0, 61px, 0);
+                    width:289px;
+                }
+            }
+        }
         
 
     }
+
 }

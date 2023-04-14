@@ -65,6 +65,336 @@ function iterateMenu(node){
 }
 
 
+/*
+CATEGORY SUBNAV
+*/
+
+if( document.querySelector('.category-subnav') ){
+
+    const subnavLI = document.querySelectorAll('.category-subnav li.parent');
+
+    for(let sni = 0; sni < subnavLI.length; sni++){
+        const li = subnavLI[sni]
+        console.log('category subnav detected', li);
+
+        li.addEventListener('click', (evt) => {
+
+            if(window.innerWidth < 900){
+
+                if(evt.target.classList.contains('parent-arrow') ){
+                    evt.preventDefault();
+
+                    // Close any expanded LI's
+                    for(let exi = 0; exi < subnavLI.length; exi++){
+                        const liItem = subnavLI[exi];
+                        if(liItem.classList.contains('expanded') ){
+                            liItem.classList.remove('expanded');
+                        }
+                    }
+
+                    // Close if already expanded
+                    if( evt.target.parentNode.parentNode.classList.contains('expanded') ){
+                        evt.target.parentNode.parentNode.classList.remove('expanded');
+                    }else{
+                        evt.target.parentNode.parentNode.classList.add('expanded');
+                    }
+                    
+                }
+            }
+            
+        });
+    }
+
+}
+
+
+/*
+SELECTABLE CONTENT
+*/
+
+class SelectableContent{
+    constructor(id){
+        this.instanceID = id;
+
+        const btns = document.querySelectorAll(`#` + id + ` .items .img-link`);
+
+        for(let i = 0; i < btns.length; i++){
+            const btn = btns[i];
+
+            btn.addEventListener('click', (evt) => {
+                this.btnClick(evt);
+            });
+        }
+
+        window.addEventListener('resize', (evt)=>{
+            this.resize(evt);
+        });
+
+        setTimeout( ()=>{
+            this.resize();
+        }, 500 );
+        
+    }
+
+    btnClick(evt){
+        evt.preventDefault();
+
+        this.hidePrevious();
+
+        this.showNext(evt.currentTarget.dataset.code);
+    }
+
+    hidePrevious(){
+        // Header
+        const selectedHeader = document.querySelector(`#` + this.instanceID + ` .header-container .header-item.selected` );
+        selectedHeader.classList.remove('selected');
+
+        // Button
+        const selectedBtn = document.querySelector(`#` + this.instanceID + ` .items .img-link.selected` );
+        selectedBtn.classList.remove('selected');
+    }
+
+    showNext(id){
+        // Header
+        const selectedHeader = document.querySelector(`#` + this.instanceID + ` .header-container .header-item#` + id );
+        selectedHeader.classList.add('selected');
+
+        // Button
+        const selectedBtn = document.querySelector(`#` + this.instanceID + ` .items .img-link#btn-` + id );
+        selectedBtn.classList.add('selected');
+    }
+
+    resize(evt){
+        // Set height of all .header-container to tallest child
+        const headerContainer = document.querySelector( `#` + this.instanceID + ` .header-container` );
+
+        const children = document.querySelectorAll( `#` + this.instanceID + ` .header-container .header-item` );
+
+        let height = 0;
+
+        for(let i = 0; i < children.length; i++){
+            const child = children[i];
+
+            if( child.offsetHeight > height ){
+                height = child.offsetHeight;
+            }
+        }
+
+        headerContainer.style.height = height + 'px';
+    }
+}
+
+if( document.querySelector('.selectable-content') ){
+    // Iterate through all SelectableContent instances and instantiate
+    const allContent = document.querySelectorAll('.selectable-content');
+
+    for(let si = 0; si < allContent.length; si++){
+        const contentItem = allContent[si];
+        const sContent = new SelectableContent(contentItem.id);
+    }
+}
+
+/*
+CAROUSEL CONTENT SELECTION
+*/
+
+class CarouselContentSelection{
+    constructor(id){
+        this.instanceID = id;
+
+        this.carouselIndex = 0;
+        
+        this.carousel = new Glider(document.querySelector(`.carousel_content_selection#` + id + ` .cards`), {
+            slidesToShow: 1,
+            dots: '.dots',
+            infinite:true,
+            /*arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            },*/
+            responsive:[
+                {
+                    breakpoint:600,
+                    settings:{
+                        slidesToShow:2
+                    }
+                },{
+                    breakpoint:1200,
+                    settings:{
+                        slidesToShow:3
+                    }
+                }
+            ]
+        });
+
+        this.prev = document.querySelector(`.carousel_content_selection#` + id + ` .arrow-container .glider-prev`);
+
+        this.prev.addEventListener('click', (evt)=>{
+            this.prevClick(evt);
+        });
+
+        this.next = document.querySelector(`.carousel_content_selection#` + id + ` .arrow-container .glider-next`);
+
+        this.next.addEventListener('click', (evt)=>{
+            this.nextClick(evt);
+        });
+
+        window.addEventListener('resize', (evt)=>{
+            this.resize(evt);
+        });
+
+        setTimeout( ()=>{
+            this.resize();
+        }, 500 );
+
+        const allTextCards = document.querySelectorAll(`.carousel_content_selection#` + id + ` .carousel-container .card`);
+
+        // Activate Cards Clicks
+        for(let i = 0; i < allTextCards.length; i++){
+            const card = allTextCards[i];
+
+            card.addEventListener("click", (evt)=>{
+                this.goto(evt.currentTarget.dataset.index);
+            });
+        }
+
+        // Select Initial Display Item
+        const firstItem = document.querySelectorAll(`.carousel_content_selection#` + id + ` .halfhalf-player .halfhalf-img`)[0];
+        firstItem.classList.add('selected');
+
+        const firstTextItem = document.querySelectorAll(`.carousel_content_selection#` + id + ` .carousel-container .card`)[0];
+        firstTextItem.classList.add('selected');
+
+        // Show Component (initially opacity:0 to avoid pre-styled mess)
+        setTimeout( ()=>{
+            document.querySelector(`.carousel_content_selection#` + id).style.opacity = 1;
+        }, 1000);
+        
+    }
+
+    goto(id){
+        console.log('goto', id);
+        const Items = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img`);
+        const TextItems = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card`);
+
+
+        this.carouselIndex = id;
+
+        // Deselect Old Item
+        const oldItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img.selected`);
+        const oldTextItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card.selected`);
+
+        oldItem.classList.remove('selected');
+        oldTextItem.classList.remove('selected');
+
+        // Select Display Item
+        Items[this.carouselIndex].classList.add('selected');
+
+        TextItems[this.carouselIndex].classList.add('selected');
+
+        
+        // Carousel page logic
+        if(window.innerWidth >= 600){
+            this.carousel.scrollItem(this.carouselIndex - 1);
+        }else{
+            this.carousel.scrollItem(this.carouselIndex);
+        }
+    }
+
+    prevClick(evt){
+        const Items = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img`);
+        const TextItems = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card`);
+
+        this.carouselIndex--;
+
+        if(this.carouselIndex < 0){
+            this.carouselIndex = 0;
+        }
+
+        // Deselect Old Item
+        const oldItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img.selected`);
+        const oldTextItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card.selected`);
+
+        oldItem.classList.remove('selected');
+        oldTextItem.classList.remove('selected');
+
+        // Select Display Item
+        Items[this.carouselIndex].classList.add('selected');
+
+        TextItems[this.carouselIndex].classList.add('selected');
+
+        
+        // Carousel page logic
+        if(window.innerWidth >= 600){
+            if(this.carouselIndex < Items.length - 2){
+                this.carousel.scrollItem(this.carouselIndex - 1);
+            }
+        }else{
+            this.carousel.scrollItem(this.carouselIndex);
+        }
+    }
+
+    nextClick(evt){
+        const Items = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img`);
+        const TextItems = document.querySelectorAll(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card`);
+
+        this.carouselIndex++;
+
+        if(this.carouselIndex >= Items.length - 1){
+            this.carouselIndex = Items.length - 1;
+        }
+
+        // Deselect Old Item
+        const oldItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .halfhalf-player .halfhalf-img.selected`);
+        const oldTextItem = document.querySelector(`.carousel_content_selection#` + this.instanceID + ` .carousel-container .card.selected`);
+
+        oldItem.classList.remove('selected');
+        oldTextItem.classList.remove('selected');
+
+        // Select Display Item
+        Items[this.carouselIndex].classList.add('selected');
+
+        TextItems[this.carouselIndex].classList.add('selected');
+
+        
+        // Carousel page logic
+        if(window.innerWidth >= 600){
+            if(this.carouselIndex > 1){
+                this.carousel.scrollItem(this.carouselIndex - 1);
+            }
+        }else{
+            this.carousel.scrollItem(this.carouselIndex);
+        }
+    }
+
+    resize(evt){
+        // Set height of all .header-container to tallest child
+        const headerContainer = document.querySelector( `#` + this.instanceID + ` .halfhalf-player` );
+
+        const children = document.querySelectorAll( `#` + this.instanceID + ` .halfhalf-player .halfhalf-img` );
+
+        let height = 0;
+
+        for(let i = 0; i < children.length; i++){
+            const child = children[i];
+
+            if( child.offsetHeight > height ){
+                height = child.offsetHeight;
+            }
+        }
+
+        headerContainer.style.height = height + 'px';
+    }
+}
+
+if( document.querySelector('.carousel_content_selection') ){
+    const allContent = document.querySelectorAll('.carousel_content_selection');
+
+    for(let ci = 0; ci < allContent.length; ci++){
+        const contentItem = allContent[ci];
+        const sContent = new CarouselContentSelection(contentItem.id);
+    }
+}
 
 
 /*
@@ -98,7 +428,7 @@ for(let mobileMenuI = 0; mobileMenuI < mobileLI.length; mobileMenuI++){
 
     mLI.addEventListener('click', (evt)=>{
         if(evt.target.parentElement.classList.contains('menu-item-has-children') === true ){
-            //evt.preventDefault();
+            evt.preventDefault();
 
     
             setTimeout( ()=>{
@@ -117,8 +447,8 @@ for(let mobileMenuI = 0; mobileMenuI < mobileLI.length; mobileMenuI++){
     
             }, 100);
         }else{
+            
         }
-        
 
 
     })
@@ -128,6 +458,7 @@ for(let mobileMenuI = 0; mobileMenuI < mobileLI.length; mobileMenuI++){
 /*
 Card Text Carousels
 */
+/*
 const cardtextcarousels = document.querySelectorAll('.text_card_carousel');
 
 if( cardtextcarousels.length > 0 ){
@@ -153,7 +484,7 @@ if( cardtextcarousels.length > 0 ){
         ]
     });
 }
-
+*/
 
 /** 
  * Product Detail Gallery Selector
@@ -162,7 +493,6 @@ if( cardtextcarousels.length > 0 ){
 const product_gallery = document.querySelectorAll('.post-template-single-product #product .product-gallery')
 
 if(product_gallery.length > 0){
-    console.log('product-gallery detected');
     const gallery_thumbnails_container = document.querySelector('.post-template-single-product #product .product-gallery .thumbnails ul');
 
     new Glider(gallery_thumbnails_container, {

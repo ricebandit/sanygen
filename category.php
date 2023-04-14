@@ -22,7 +22,7 @@ get_header();
 	wp_nav_menu( [ 
 		'theme_location'	=> 'productsubnav',
 		'link_before'		=> '<div class="selected-icon"><img src="/wp-content/uploads/2023/03/product-subnav-selected-icon.svg" alt=""></div><div class="icon"></div><div class="label text-white">',
-		'link_after'		=> '</div>'
+		'link_after'		=> '</div><div class="parent-arrow"></div>'
 	] ); 
 	?>
 		</div>

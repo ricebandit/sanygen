@@ -252,7 +252,7 @@ get_header();
 													</div>
 													<div class="item-panel col-8">
 														<p class="text-darkblue m-0 p-0"><?php echo $item['journey_event_date']; ?></p>
-														<h4 class="product-name m-0 p-0"><?php echo $item['journey_event_title']; ?></h4>
+														<h4 class="product-name m-0 p-0 text-darkblue"><?php echo $item['journey_event_title']; ?></h4>
 													</div>
 												</div>
 											<?php }?>
@@ -273,7 +273,7 @@ get_header();
 													</div>
 													<div class="item-panel col-8">
 														<p class="text-darkblue m-0 p-0"><?php echo $item['journey_event_date']; ?></p>
-														<h4 class="product-name m-0 p-0"><?php echo $item['journey_event_title']; ?></h4>
+														<h4 class="product-name m-0 p-0 text-darkblue"><?php echo $item['journey_event_title']; ?></h4>
 													</div>
 												</div>
 											<?php }?>
@@ -305,17 +305,17 @@ get_header();
 					?>
 			
 					<section class="related-articles container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
-						<div class="container-fluid container-lg">
+						<div class="container-fluid container-xl">
 							<div class="header-container col-8 offset-2 col-lg-8 offset-lg-2 d-flex flex-column align-items-center">
 								<h2 class="header home-category-header text-darkblue"><?php echo get_sub_field('related_title'); ?></h2>
 								<div class="home-category-header text-darkblue description"><?php echo get_sub_field('related_description'); ?></div>
 
 								<?php if( get_sub_field('related_show_cta') === true ){ ?>
-								<a href="<?php echo get_sub_field('cta_url'); ?>" class="bold link text-transform-unset text-darkblue"><?php echo get_sub_field('related_cta_text'); ?></a>
+								<a href="<?php echo get_sub_field('cta_url'); ?>" class="bold link text-darkblue"><?php echo get_sub_field('related_cta_text'); ?></a>
 								<?php } ?>
 							</div>
 
-							<div class="items d-flex flex-row col-8 offset-2">
+							<div class="items d-flex flex-row  container-md">
 								<?php
 									$items = get_sub_field('related_links');
 
@@ -353,8 +353,8 @@ get_header();
 									foreach($items as $item){
 								?>
 									<a href="<?php echo $item['related_link_url'] ?>" class="img-link col-md-4 d-flex flex-column justify-content-start">
-										<h4 class="header darkblue"><?php echo $item['title'] ?></h4>
-										<p class="header darkblue"><?php echo $item['description'] ?></p>
+										<h4 class="header text-darkblue"><?php echo $item['title'] ?></h4>
+										<div class="header text-darkblue"><?php echo $item['description'] ?></div>
 									</a>
 								<?php
 									}
@@ -425,13 +425,13 @@ get_header();
 					?>
 			
 					<section class="contact container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
-						<div class="container">
+						<div class="container-fluid container-md">
 							<div class="row d-flex flex-rows">
 								<div class="container col-md-6 left">
-									<h2 class="header darkblue"><?php echo get_sub_field('contact_title'); ?></h2>
-									<div class="description darkblue"><?php echo get_sub_field('contact_description'); ?></div>
-									<h3 class="home-category-header darkblue"><?php echo get_sub_field('contact_listing_text'); ?></h3>
-									<h4 class="product-name darkblue"><?php echo get_sub_field('contact_name'); ?></h4>
+									<h2 class="header text-darkblue"><?php echo get_sub_field('contact_title'); ?></h2>
+									<div class="description text-darkblue"><?php echo get_sub_field('contact_description'); ?></div>
+									<h3 class="home-category-header text-darkblue"><?php echo get_sub_field('contact_listing_text'); ?></h3>
+									<h4 class="product-name text-darkblue"><?php echo get_sub_field('contact_name'); ?></h4>
 
 									<div class="contact-items container d-grid m-0 p-0">
 										<?php
@@ -441,8 +441,8 @@ get_header();
 												foreach($items as $item){
 										?>
 											<div class="container col-6 m-0 p-0">
-												<p class="darkblue mt-1 mb-1"><?php echo $item['contact_method']; ?></p>
-												<a class="contact-link header darkblue mt-1 mb-1" href="<?php echo $item['contact_url']; ?>"><?php echo $item['contact_info']; ?></a>
+												<p class="text-darkblue mt-1 mb-1"><?php echo $item['contact_method']; ?></p>
+												<a class="contact-link header text-darkblue mt-1 mb-1" href="<?php echo $item['contact_url']; ?>"><?php echo $item['contact_info']; ?></a>
 											</div>
 										<?php
 												}
@@ -502,11 +502,11 @@ get_header();
 						?>
 	
 						<section class="accordian_group container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString; ?>>
-							<div class="container">
+							<div class="container-fluid container-md">
 								<div class="row d-flex">
 									<div class="header-container container col-md-6 d-flex flex-column">
-										<h2 class="header darkblue"><?php echo get_sub_field('accordian_title'); ?></h2>
-										<div class="description darkblue"><?php echo get_sub_field('accordian_description'); ?></div>
+										<h2 class="header text-darkblue"><?php echo get_sub_field('accordian_title'); ?></h2>
+										<div class="description text-darkblue"><?php echo get_sub_field('accordian_description'); ?></div>
 									</div>
 
 									<div class="container">
@@ -531,7 +531,7 @@ get_header();
 														<button class="accordion-button" type="button" data-bs-toggle="collapse" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $index; ?>"><?php echo $chunkL['accordian_item_title']; ?></button>
 													</h2>
 													<div id="collapse-<?php echo $index; ?>" class="accordion-collapse collapse <?php echo $show; ?>" aria-labelledby="heading-<?php echo $index; ?>" data-bs-parent="#accordion-left">
-														<div class="accordion-body"><?php echo $chunkL['accordian_text']; ?></div>
+														<div class="accordion-body text-darkblue"><?php echo $chunkL['accordian_text']; ?></div>
 													</div>
 												</div>
 												<?php 
@@ -701,8 +701,8 @@ get_header();
 										foreach( get_sub_field('text_cards') as $item ){
 										?>
 										<div class="card">
-											<h4 class="header darkblue"><?php echo $item['title']; ?></h4>
-											<div class="description darkblue"><?php echo $item['description']; ?></div>
+											<h4 class="header text-darkblue"><?php echo $item['title']; ?></h4>
+											<div class="description text-darkblue"><?php echo $item['description']; ?></div>
 										</div>
 
 										<?php
@@ -724,6 +724,109 @@ get_header();
 						================================== */
 
 						/* ==================================
+						CAROUSEL CONTENT SELECTION
+						================================== */
+						if(get_row_layout() == 'carousel_content_selection'):
+						?>
+						<section id="<?php echo get_sub_field('id'); ?>" style="opacity:0;" class="carousel_content_selection container-fluid d-flex flex-column align-items-center">
+							
+			
+							<div class="container-fluid container-lg d-flex">
+
+							<?php
+								// FLIP Sides if image_side = "right"
+								$flip = '';
+								$flipmd = 'flex-md-row';
+								if(get_sub_field('image_side') === 'Right'){
+									$flip = 'flex-row-reverse';
+									$flipmd = 'flex-md-row-reverse';
+								}
+
+								$lessthan = '';
+								if( count(get_sub_field('items')) < 3 ){
+									$lessthan = 'less';
+								}
+							?>
+								<div class="halfhalf-container row col-12 <?php echo $flip; ?> flex-column <?php echo $flipmd; ?>">
+									<div class="left col-md-6 d-flex align-items-center">
+										<div class="halfhalf-background" style="background:url(<?php echo get_sub_field('background_shape'); ?>)no-repeat center;background-size:contain;"></div>
+
+										<div class="halfhalf-player container p-0">
+											
+												<?php 
+												if( get_sub_field('items') ){
+													$siIndex = 0;
+													$headerItems = get_sub_field('items');
+
+													foreach($headerItems as $hItem){
+														// FLIP Sides if image_side = "right"
+														$flip = '';
+														$flipmd = 'flex-md-row';
+														if( $hItem['image_side'] === 'Right'){
+															$flip = 'flex-row-reverse';
+															$flipmd = 'flex-md-row-reverse';
+														}
+												?>
+												<div  id="img" class="halfhalf-img" style="background:url(<?php echo $hItem['featured_image']; ?>)no-repeat center;background-size:cover;"></div>
+
+												<?php
+													}
+												}
+												?>
+										</div>
+									</div>
+									<div class="right col-md-6 d-flex flex-column justify-content-center">
+										<div class="container">
+											<img src="<?php echo get_sub_field('icon'); ?>" alt="" class="stamp">
+											<h2 class="header text-darkblue"><?php echo get_sub_field('illustrated_title'); ?></h2>
+											<div class="description text-darkblue"><?php echo get_sub_field('illustrated_description'); ?></div>
+
+											<?php if(get_sub_field('display_cta') === true){
+											?>
+											<a href="<?php echo get_sub_field('cta_url'); ?>" class="pill-cta background-orange text-darkblue"><?php echo get_sub_field('cta_text'); ?></a>
+											<?php
+											} ?>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+			
+							<div class="text-carousel container-fluid container-lg d-flex p-0">
+								<div class="carousel-container <?php echo $lessthan; ?> row col-12 ">
+									<div class="arrow-container col-1 d-flex justify-content-center align-items-center p-0">
+										<div class="glider-arrow glider-prev"></div>
+									</div>
+									<div class="cards col-10 p-0">
+										<?php 
+										$itemIndex = 0;
+										foreach( get_sub_field('items') as $item ){
+										?>
+										<div class="card" data-index="<?php echo $itemIndex; ?>">
+											<h4 class="header text-darkblue"><?php echo $item['title']; ?></h4>
+											<div class="description text-darkblue"><?php echo $item['description']; ?></div>
+										</div>
+
+										<?php
+											$itemIndex++;
+										}
+										?>
+									</div>
+									<div class="arrow-container col-1 d-flex justify-content-center align-items-center p-0">
+										<div class="glider-arrow glider-next"></div>
+									</div>
+
+								</div>
+							</div>
+						</section>
+						<?php
+						endif;
+	
+						/* ==================================
+						CAROUSEL CONTENT SELECTION END
+						================================== */
+
+						/* ==================================
 						ACCORDIAN GROUP FULL WIDTH
 						================================== */
 						if(get_row_layout() == 'accordian_group_full_width'):
@@ -736,11 +839,11 @@ get_header();
 							?>
 		
 							<section class="accordian_group_full_width container-fluid flexible-content pt-5 pb-5 <?php echo $addMarginTop; ?>"<?php echo $styleString; ?>>
-								<div class="container">
+								<div class="container-fluid container-md">
 									<div class="row d-flex flex-rows">
 										<div class="container col-sm-6 d-flex flex-column">
-											<h2 class="header darkblue"><?php echo get_sub_field('accordian_title'); ?></h2>
-											<p class="darkblue"><?php echo get_sub_field('accordian_description'); ?></p>
+											<h2 class="header text-darkblue"><?php echo get_sub_field('accordian_title'); ?></h2>
+											<p class="text-darkblue"><?php echo get_sub_field('accordian_description'); ?></p>
 										</div>
 
 										<div class="container">
@@ -761,10 +864,10 @@ get_header();
 													?>
 													<div class="accordion-item <?php echo $selected; ?>" id="accordion-item-<?php echo $index; ?>">
 														<h2 class="accordion-header" id="heading-<?php echo $index; ?>">
-															<button class="accordion-button" type="button" data-bs-toggle="collapse" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $index; ?>"><?php echo $item['accordian_item_title']; ?></button>
+															<button class="accordion-button" type="button" data-bs-toggle="collapse" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $index; ?>"><div class="btn-text" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>"><?php echo $item['accordian_item_title']; ?></div></button>
 														</h2>
 														<div id="collapse-<?php echo $index; ?>" class="accordion-collapse collapse <?php echo $show; ?>" aria-labelledby="heading-<?php echo $index; ?>" data-bs-parent="#accordion-full">
-															<div class="accordion-body"><?php echo $item['accordian_text']; ?></div>
+															<div class="accordion-body text-darkblue"><?php echo $item['accordian_text']; ?></div>
 														</div>
 													</div>
 													<?php 
@@ -881,7 +984,7 @@ for(let i = 0; i < accordionItems.length; i++){
 
 							?>
 		
-						<section class="team_cards container-fluid container-md d-grid" >
+						<section class="team_cards container-fluid container-md d-grid justify-content-start" >
 							<?php
 								$index = 1;
 								foreach($cards as $card){
@@ -921,7 +1024,7 @@ for(let i = 0; i < accordionItems.length; i++){
 								<div class="main-panel row d-flex flex-column flex-xl-row  justify-content-center">
 									<div class="left col-xl-6">
 										<h2 class="header text-darkblue"><?php echo get_sub_field('title'); ?></h2>
-										<p class="text-darkblue"><?php echo get_sub_field('main_description'); ?></p>
+										<div class="text-darkblue"><?php echo get_sub_field('main_description'); ?></div>
 									</div>
 
 									<div class="right col-sm-6 offset-sm-6 offset-xl-0"><img src="<?php echo get_sub_field('guarantee_stamp'); ?>" alt=""></div>
@@ -937,7 +1040,7 @@ for(let i = 0; i < accordionItems.length; i++){
 								<div class="step-container">
 									<h4 class="product-name text-darkblue"><?php echo  $step['step_title']; ?></h4>
 
-									<p class="text-darkblue"><?php echo  $step['step_description']; ?></p>
+									<div class="text-darkblue"><?php echo  $step['step_description']; ?></div>
 								</div>
 								<?php
 									}
@@ -953,6 +1056,66 @@ for(let i = 0; i < accordionItems.length; i++){
 
 						/* ==================================
 						HEADER STEPS END
+						================================== */
+
+						/* ==================================
+						SELECTABLE CONTENT
+						================================== */
+						if(get_row_layout() == 'selectable_content'):
+							
+							if(get_sub_field('selectable_content_background')){
+								$styleString = ' style="background:url(' . get_sub_field('selectable_content_background') . ')no-repeat center;background-size:cover;"';
+							}else{
+								$styleString = '';
+							}; 
+							
+						?>
+				
+						<section id="<?php echo get_sub_field('id'); ?>" class="selectable-content container-fluid flexible-content <?php echo $addMarginTop; ?>"<?php echo $styleString ?>>
+							<div class="container-fluid container-xl">
+								<div class="header-container col-8 offset-2 col-lg-8 offset-lg-2 d-flex align-items-center">
+									<?php 
+									if( get_sub_field('items') ){
+										$siIndex = 0;
+										$headerItems = get_sub_field('items');
+
+										foreach($headerItems as $hItem){
+									?>
+									<div id="<?php echo $hItem['content_code'] ?>" class="header-item d-flex flex-column align-items-center <?php if($siIndex == 0){ echo "selected";}; ?>">
+										<h2 class="header home-category-header text-darkblue"><?php echo $hItem['title']; ?></h2>
+										<div class="home-category-header text-darkblue description"><?php echo $hItem['description']; ?></div>
+
+										<?php if( $hItem['show_cta'] === true ){ ?>
+										<a href="<?php echo $hItem['cta_url']; ?>" class="bold link text-darkblue"><?php echo $hItem['cta_text']; ?></a>
+										<?php } ?>
+									</div>
+									<?php 
+											$siIndex++;
+										}
+									} 
+									?>
+								</div>
+
+								<div class="items d-flex flex-row  container-md">
+									<?php
+										$siIndex = 0;
+										$items = get_sub_field('items');
+
+										foreach($items as $item){
+									?>
+										<a id="btn-<?php echo $item['content_code'] ?>" href="#" class="img-link col-3  <?php if($siIndex == 0){ echo "selected";}; ?>" data-code="<?php echo $item['content_code'] ?>"><img src="<?php echo $item['icon']; ?>" alt=""></a>
+									<?php
+											$siIndex++;
+										}
+									?>
+								</div>
+							</div>
+						</section>
+				
+						<?php				
+						endif;
+						/* ==================================
+						SELECTABLE CONTENT END
 						================================== */
 
 

@@ -10,7 +10,7 @@ body#sanygen{
 
     .header-font{font-family:'Powerr';}
 
-    .text-darkblue{color:#26465f;}
+    .text-darkblue{color:#002C5F;}
     .text-orange{color:#FF8729;}
     .text-blue{color:#0085ca;}
     .text-seafoam{color:#45bdb3;}
@@ -41,6 +41,8 @@ body#sanygen{
             font-size:80px;
             font-family:'Powerr';
             font-weight:400;
+            letter-spacing:0.1em;
+            margin-bottom:21px;
         }
         
     }
@@ -84,6 +86,8 @@ body#sanygen{
 
     p{
         font-size:16px;
+        letter-spacing:0.25px;
+        line-height:26px;
 
         .cta{
             font-size:16px;
@@ -128,7 +132,7 @@ body#sanygen{
         padding:16px 79px;
         position:relative;
         text-decoration:none;
-
+        text-transform:capitalize;
         transition:250ms border;
 
         &:before{
@@ -147,7 +151,7 @@ body#sanygen{
         
         &.orange{
             background:$orange;
-            color:#26465f;
+            color:#002c5f;
         }
 
         &.orange:active{
@@ -175,21 +179,20 @@ body#sanygen{
 
     a.link{
         display:inline-block;
-        font-size:18px;
-        font-weight:600;
+        font-size:20px;
+        font-family:"Powerr";
         margin-right:10px;
         position:relative;
         text-decoration:none;
-        text-transform: uppercase;
+        text-transform: capitalize;
 
         &.bold{
-            font-family:"Powerr";
             font-weight:400;
             margin-bottom:4px;
 
             &:after{
                 bottom:2px;
-                height:1px;
+                height:2px;
             }
         }
 
@@ -259,6 +262,7 @@ body#sanygen{
             margin-left:8px;
             margin-right:8px;
             text-decoration:none;
+            text-transform:capitalize;
             width:auto;
 
             
@@ -298,7 +302,7 @@ body#sanygen{
                     background:white;
                     border:8px solid rgba(255, 194, 148, 0.5);
                     border-radius:50px;
-                    color:#26465f;
+                    color:#002C5F;
                     font-family:'Powerr';
                     margin-left:10px;
                     margin-right:0px;
@@ -306,6 +310,7 @@ body#sanygen{
                     padding:9px 44px 8px;
                     pointer-events:none;
                     position:relative;
+                    text-transform:capitalize;
                     white-space:nowrap;
 
                     &:before{
