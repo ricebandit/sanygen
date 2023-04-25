@@ -1,4 +1,8 @@
 body.category{
+    #primary{
+        padding-bottom:158px;
+    }
+
     .hero{
         min-height:600px;
         overflow:hidden;
@@ -316,11 +320,9 @@ body.category{
 
             &.product-item{
                 .img-container{
-                    border-radius:50px;
-                    flex:1;
-                    overflow:hidden;
+                    height:192px;
                     position: relative;
-                    transform:scale(0.98);
+                    transform:scale(0.9);
                     z-index:3;
                 }
 
@@ -643,7 +645,7 @@ body.category{
         .gallery-items{
             grid-template-columns:repeat(4, 1fr);
             gap:15px;
-            margin:100px auto;
+            margin:100px auto 50px;
         }
     }
 }

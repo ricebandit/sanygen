@@ -328,4 +328,114 @@ body#sanygen{
                 
         }
     }
+
+    .pagination{
+        margin-top:50px;
+        position:relative;
+
+        .navigation{
+            width:100%;
+
+            ul{
+                align-items:center;
+                display:flex;
+                list-style-type:none;
+                margin:0;
+                padding:0;
+
+                li{
+                    a.arrow{
+                        background:url(/wp-content/uploads/2023/04/carousel-arrow.svg)no-repeat center;
+                        background-size:contain;
+                        display:block;
+                        height:30px;
+                        border:none;
+                        width:18px;
+
+                        &:before,
+                        &:after{
+                            content:none;
+                        }
+
+                        &.prev{
+                            transform:rotate(180deg);
+                        }
+                    }
+
+                    a{
+                        align-items:center;
+                        background:white;
+                        border-radius:50px;
+                        color:#26465f;
+                        display:flex;
+                        font-family:'Powerr';
+                        font-size:25px;
+                        height:54px;
+                        justify-content:center;
+                        margin:0 11px;
+                        position:relative;
+                        text-decoration:none;
+                        transition:250ms outline;
+                        width:54px;
+
+                        &:before,
+                        &:after{
+                            border-radius:50px;
+                            content:'';
+                            opacity:1;
+                            position:absolute;
+                        }
+
+                        &:before{
+                            background:white;
+                            border:2px solid #E0E0E0;
+                            height:calc(100% + 2px);
+                            left:-1px;
+                            top:-1px;
+                            transition:250ms border;
+                            width:calc(100% + 2px);
+                            z-index:2;
+                        }
+
+                        &:after{
+                            border:8px solid rgba(255, 194, 148, 0.5);
+                            height:calc(100% + 16px);
+                            left:-8px;
+                            top:-8px;
+                            transform:scale(0.25);
+                            transition:250ms transform, 250ms opacity;
+                            width:calc(100% + 16px);
+                            z-index:1;
+                        }
+
+                        span{
+                            opacity:0.5;
+                            position:relative;
+                            transform:translate3d(0, 2px, 0);
+                            z-index:3;
+                        }
+                    }
+
+                    &.active,
+                    &:hover{
+                        a{
+
+                            &:before{
+                                border:2px solid #ffc294;
+                                opacity:1;
+                            }
+                            &:after{
+                                opacity:1;
+                                transform:scale(1);
+                            }
+
+                            span{
+                                opacity:1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

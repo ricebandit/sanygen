@@ -69,20 +69,25 @@ get_header();
 			$cat_id = 0;
 		}
 
+		global $paged_n;
+
+		$postsPerPage = 24;
+
 		$cat_args = array(
-			'posts_per_page'	=> -1,
-			'category'			=> $cat_id
+			'posts_per_page'	=> $postsPerPage,
+			'category'			=> $cat_id,
+			'paged'				=> $paged_n,
 		);
 
-		$catPost = get_posts( $cat_args );
+		$catPost = new WP_Query( $cat_args );
 
-
-		foreach( $catPost as $cpost){
+		foreach( $catPost->posts as $cpost){
+			
 		?>
 
 		<a href="<?php echo get_permalink($cpost->ID); ?>" class="product-item card d-flex flex-columns">
-			<div class="img-container d-flex justify-content-center align-items-center">
-				<img src="<?php echo get_field('product_gallery',$cpost->ID)[0]; ?>" alt="">
+			
+			<div class="img-container d-flex justify-content-center align-items-center" style="background:url(<?php echo get_field('product_gallery',$cpost->ID)[0]; ?>)no-repeat center; background-size:contain;">
 			</div>
 			<div class="product-title justify-content-center">
 				<div class="rounded">
@@ -105,6 +110,15 @@ get_header();
 		}
 		?>
 	</div>
+
+	<section class="container-fluid pagination">
+		<div class="container d-flex justify-content-left">
+			<?php 
+
+				category_pagination($catPost, $paged_n); 
+			?>
+		</div>
+	</section>
 
 	</main><!-- #main -->
 

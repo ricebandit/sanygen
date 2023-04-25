@@ -102,6 +102,26 @@ function sanytize_setup() {
 }
 add_action( 'after_setup_theme', 'sanytize_setup' );
 
+/**
+ * Fix pagination on archive pages
+ * After adding a rewrite rule, go to Settings > Permalinks and click Save to flush the rules cache
+ */
+function my_pagination_rewrite() {
+    add_rewrite_rule('blog/page/?([0-9]{1,})/?$', 'index.php?category_name=blog&paged=$matches[1]', 'top');
+}
+add_action('init', 'my_pagination_rewrite');
+
+function remove_page_from_query_string($query_string)
+{
+    if (isset($query_string['paged'])) {
+        unset($query_string['name']);
+		$GLOBALS['paged_n'] = $query_string['paged'];
+        $query_string['paged'] = $query_string['page'];
+
+    }
+    return $query_string;
+}
+add_filter('request', 'remove_page_from_query_string');
 
 /** 
  * Add slug to body tag as class
@@ -336,6 +356,109 @@ function get_next_pagelink($max) {
 
 function get_prev_pagelink() {
     global $paged;
+
+    if ( !is_single() ) {
+        $nextpage = intval($paged) - 1;
+        if ( $nextpage < 1 )
+            $nextpage = 1;
+
+        return get_pagenum_link($nextpage);
+    }
+
+}
+
+/**
+ * CATEGORY PAGINATION
+ */
+function category_pagination($query, $paged) {
+  
+    if( is_singular() )
+        return;
+  
+
+  
+    /** Stop execution if there's only 1 page */
+    if( $query->max_num_pages <= 1 )
+        return;
+	
+
+    $max   = intval( $query->max_num_pages );
+	
+
+	if ( $paged == 1 ){
+		$links[] = $paged;
+		$links[] = $paged + 1;
+		if($max > 2){
+			$links[] = $paged + 2;
+		}
+	}
+
+	if ( $paged == 2 ){
+		$links[] = $paged - 1;
+		$links[] = $paged;
+		if($max > 2){
+			$links[] = $paged + 1;
+		}
+	}
+
+		
+	if( ($paged > 2 && $paged < $max)){
+		$links[] = $paged - 1;
+		$links[] = $paged;
+		if($max > 2){
+			$links[] = $paged + 1;
+		}
+	}
+
+	if($max > 2){
+		if($paged == $max){
+			$links[] = $paged - 2;
+			$links[] = $paged - 1;
+			$links[] = $paged;
+		}
+	}
+
+  
+    echo '<div class="navigation"><ul>' . "\n";
+
+	
+  
+    /** Previous Post Link */
+	if(get_prev_catlink($paged) ){
+		echo '<li><a href="' . get_prev_catlink($paged) . '" class="arrow prev"></a></li>';
+	}
+  
+  
+    /** Link to current page, plus 2 pages in either direction if necessary */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="active"' : '';
+        printf( '<li%s><a href="%s"><span>%s</span></a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+    }
+  
+  
+    /** Next Post Link */
+    if ( get_next_catlink($paged, $max) )
+		echo '<li><a href="' . get_next_catlink($paged, $max) . '" class="arrow next"></a></li>';
+
+  
+    echo '</ul></div>' . "\n";
+  
+}
+
+function get_next_catlink($paged, $max) {
+
+    if ( !is_single() ) {
+        $nextpage = intval($paged) + 1;
+        if ( $nextpage >= $max - 1)
+            $nextpage = $max;
+		return get_pagenum_link($nextpage);
+        
+    }
+
+}
+
+function get_prev_catlink($paged) {
 
     if ( !is_single() ) {
         $nextpage = intval($paged) - 1;
