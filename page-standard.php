@@ -561,31 +561,28 @@ get_header();
 
 											</div>
 
+
 <script>
 
-	// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
-	const accordionItems = document.querySelectorAll('.accordian_group .accordion .accordion-header');
-	const accordionCollapseItems = document.querySelectorAll('.accordian_group .accordion .accordion-collapse');
+// ALL clickable header items (to trigger show/collapse) from ALL GROUPS
+const accordionItems = document.querySelectorAll('.accordian_group .accordion .accordion-header');
+const accordionCollapseItems = document.querySelectorAll('.accordian_group .accordion .accordion-collapse');
+
+// activate all headers
+for(let i = 0; i < accordionItems.length; i++){
+	const header = accordionItems[i];
+	const collapse = accordionCollapseItems[i];
+
+	collapse.style.height = 0;
 	
-	// activate all headers
-	for(let i = 0; i < accordionItems.length; i++){
-		const header = accordionItems[i];
-		const collapse = accordionCollapseItems[i];
+	header.addEventListener('click', (evt) => {
 
-		collapse.style.height = 0;
-
-		if(i == 0){
-			const openInitialContent = document.querySelector('.accordian_group .accordion #collapse-0 .accordion-body p');
-			collapse.style.height = (openInitialContent.clientHeight + 50) + 'px';
-		}
+		// Close current
+		const prev = document.querySelector('.accordian_group .accordion .accordion-collapse.show');
 		
-		header.addEventListener('click', (evt) => {
-
-			// Close current
-			const prev = document.querySelector('.accordian_group .accordion .accordion-collapse.show');
-
+		if(prev){
 			prev.style.height = 0;
-			
+
 			// .selected item
 			const prevSelected = document.querySelector('.accordian_group .accordion  .selected');
 
@@ -594,24 +591,50 @@ get_header();
 
 				prevSelected.classList.remove('selected');
 			}
-
-			// Open Current
-			const openTarget = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget);
 			
-			openTarget.classList.add('show');
+		}
 
-			const openContent = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body p');
+		// Open Current
+		const parent = evt.currentTarget.parentNode;
+		const openTargetID = document.querySelector('.accordian_group .accordion #' + parent.id + ' .accordion-button ').dataset.bsTarget;
+		
+		const openTarget = document.querySelector('.accordian_group .accordion #' + parent.id + ' ' + openTargetID);
+		openTarget.classList.add('show');
 
-			openTarget.style.height = (openContent.clientHeight + 50) + 'px' ;
+		const openContent = document.querySelector('.accordian_group .accordion #' + parent.id + ' .accordion-body');
+		
+		let contentHeight = 25;
+		
+		contentHeight += 15;
+		
+		for(let i = 0; i < openContent.childNodes.length; i++){
+			const child = openContent.childNodes[i];
+			if( child.clientHeight ){
+				
+				child.style.marginBottom = '15px';
+				contentHeight += 15;
+				
+				contentHeight += child.clientHeight;
+			}
+		}
+		
 
-			// assign .selected
-			const openItem = document.querySelector('.accordian_group .accordion ' + evt.target.dataset.accordionItem);
-			openItem.classList.add('selected');
+		openTarget.style.height = (contentHeight) + 'px' ;
 
-			
-		});
-	}
+		// assign .selected
+		const openItem = document.querySelector('.accordian_group .accordion #' + parent.id);
+		openItem.classList.add('selected');
+
+
+
+		
+	});
+}
 	
+	setTimeout( ()=>{
+		accordionItems[0].click();
+	}, 2000);
+
 </script>
 
 
@@ -862,6 +885,7 @@ get_header();
 														foreach($all_items as $item){ 
 														if($index > 0){ $show = ''; $selected = '';}
 													?>
+													
 													<div class="accordion-item <?php echo $selected; ?>" id="accordion-item-<?php echo $index; ?>">
 														<h2 class="accordion-header" id="heading-<?php echo $index; ?>">
 															<button class="accordion-button" type="button" data-bs-toggle="collapse" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>" aria-expanded="true" aria-controls="collapse-<?php echo $index; ?>"><div class="btn-text" data-accordion-item="#accordion-item-<?php echo $index; ?>" data-bs-target="#collapse-<?php echo $index; ?>"><?php echo $item['accordian_item_title']; ?></div></button>
@@ -891,42 +915,68 @@ for(let i = 0; i < accordionItems.length; i++){
 	collapse.style.height = 0;
 
 	if(i == 0){
-		const openInitialContent = document.querySelector('.accordian_group_full_width .accordion #collapse-0 .accordion-body p');
-		collapse.style.height = (openInitialContent.clientHeight + 70) + 'px';
+		//const openInitialContent = document.querySelector('.accordian_group_full_width .accordion #collapse-0 .accordion-body p');
+		//collapse.style.height = (openInitialContent.clientHeight + 70) + 'px';
 	}
 	
 	header.addEventListener('click', (evt) => {
+		console.log('click', evt.currentTarget);
 
 		// Close current
 		const prev = document.querySelector('.accordian_group_full_width .accordion .accordion-collapse.show');
-
-		prev.style.height = 0;
 		
-		// .selected item
-		const prevSelected = document.querySelector('.accordian_group_full_width .accordion  .selected');
-
 		if(prev){
-			prev.classList.remove('show');
+			prev.style.height = 0;
 
-			prevSelected.classList.remove('selected');
+			// .selected item
+			const prevSelected = document.querySelector('.accordian_group_full_width .accordion  .selected');
+
+			if(prev){
+				prev.classList.remove('show');
+
+				prevSelected.classList.remove('selected');
+			}
+			
 		}
 
 		// Open Current
-		const openTarget = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget);
+		const parent = evt.currentTarget.parentNode;
+		const openTargetID = document.querySelector('.accordian_group_full_width .accordion #' + parent.id + ' .accordion-button ').dataset.bsTarget;
 		
+		const openTarget = document.querySelector('.accordian_group_full_width .accordion #' + parent.id + ' ' + openTargetID);
 		openTarget.classList.add('show');
 
-		const openContent = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.bsTarget + ' .accordion-body p');
+		const openContent = document.querySelector('.accordian_group_full_width .accordion #' + parent.id + ' .accordion-body');
+		
+		let contentHeight = 25;
+		
+		contentHeight += 15;
+		
+		for(let i = 0; i < openContent.childNodes.length; i++){
+			const child = openContent.childNodes[i];
+			if( child.clientHeight ){
+				
+				child.style.marginBottom = '15px';
+				contentHeight += 15;
+				
+				contentHeight += child.clientHeight;
+			}
+		}
+		
 
-		openTarget.style.height = (openContent.clientHeight + 50) + 'px' ;
+		openTarget.style.height = (contentHeight) + 'px' ;
 
 		// assign .selected
-		const openItem = document.querySelector('.accordian_group_full_width .accordion ' + evt.target.dataset.accordionItem);
+		const openItem = document.querySelector('.accordian_group_full_width .accordion #' + parent.id);
 		openItem.classList.add('selected');
 
 		
 	});
 }
+	
+	setTimeout( ()=>{
+		accordionItems[0].click();
+	}, 2000);
 
 </script>
 

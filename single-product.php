@@ -55,16 +55,19 @@ get_header();
 							<?php 
 
 								$i = 0;
-								foreach( get_field('product_gallery') as $img ){
-									$selectState = '';
-									if( $i == 0){
-										$selectState = 'selected';
-									}
+							
+								if(get_field('product_gallery')){
+									foreach( get_field('product_gallery') as $img ){
+										$selectState = '';
+										if( $i == 0){
+											$selectState = 'selected';
+										}
 							?>
 
 							<div id="g-img-<?php echo $i ?>" class="g-image <?php echo $selectState; ?>" style="background:url(<?php echo $img; ?>)no-repeat center; background-size:contain;"></div>
 							<?php
-									$i++;
+										$i++;
+									}
 								}
 							?>
 						</div>
@@ -79,11 +82,12 @@ get_header();
 							<?php 
 
 								$i = 0;
-								foreach( get_field('product_gallery') as $imgth ){
-									$selectState = '';
-									if( $i == 0){
-										$selectState = 'selected';
-									}
+								if(get_field('product_gallery')){
+									foreach( get_field('product_gallery') as $imgth ){
+										$selectState = '';
+										if( $i == 0){
+											$selectState = 'selected';
+										}
 							?>
 							<li class="img-thumb  <?php echo $selectState; ?>" data-img="g-img-<?php echo $i ?>">
 								<div class="thumb-img-container">
@@ -92,7 +96,8 @@ get_header();
 								
 							</li>
 							<?php
-									$i++;
+										$i++;
+									}
 								}
 							?>
 						</ul>
@@ -108,20 +113,22 @@ get_header();
 				<h1 class="text-darkblue"><?php echo get_field('product_name'); ?></h1>
 				<h3 class="code text-darkblue body-font">Item #<?php echo get_field('product_code'); ?></h3>
 
-				<div class="description text-darkblue"><?php echo get_field('product_description'); ?></div>
+				<div class="description text-darkblue"><?php if(get_field('product_description')){echo get_field('product_description');} ?></div>
 				
 				<div class="links">
 				<?php
-				foreach( get_field('product_links') as $link ){
-					
-					if($link['link_type'] == 'file'){
-						?>
-							<a href="<?php echo $link['link_file']; ?>" target="_blank" class="link bold text-darkblue"><?php echo $link["link_text"]; ?></a>
-						<?php
-					}else{
-						?>
-							<a href="<?php echo $link['link_url']; ?>" target="_blank" class="link bold text-darkblue"><?php echo $link["link_text"]; ?></a>
-						<?php
+				if(get_field('product_links')){
+					foreach( get_field('product_links') as $link ){
+
+						if($link['link_type'] == 'file'){
+							?>
+								<a href="<?php echo $link['link_file']; ?>" target="_blank" class="link bold text-darkblue"><?php echo $link["link_text"]; ?></a>
+							<?php
+						}else{
+							?>
+								<a href="<?php echo $link['link_url']; ?>" target="_blank" class="link bold text-darkblue"><?php echo $link["link_text"]; ?></a>
+							<?php
+						}
 					}
 				}
 				?>
@@ -139,7 +146,7 @@ get_header();
 
 
 	</section>
-
+<?php if(get_field('related')){?>
 	<section id="related-section" class="container-fluid">
 		<div class="bg d-flex">
 			<div class="left col-6"></div>
@@ -186,7 +193,7 @@ get_header();
 			</div>
 		</div>
 	</section>
-
+<?php } ?>
 
 	</main><!-- #main -->
 
