@@ -371,6 +371,11 @@ function get_prev_pagelink() {
  * CATEGORY PAGINATION
  */
 function category_pagination($query, $paged) {
+	
+	/* if $paged is undefined, that means it's the un-paginated parent page, so set paged to first */
+	if( strlen($paged) == 0){
+		$paged = 1;
+	}
   
     if( is_singular() )
         return;

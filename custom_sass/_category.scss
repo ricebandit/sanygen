@@ -99,7 +99,7 @@ body.category{
 
                             .icon{
                                 background:white;
-                                display:block;
+                                display:inline-block;
                                 height:40px;
                                 margin-bottom:10px;
                                 opacity:0.5;
@@ -108,20 +108,20 @@ body.category{
                             }
 
                             .label{
-                                max-width:unset;
+                                max-width:calc(100vw - 202px);
                             }
 
                             .parent-arrow{
                                 background:url(/wp-content/uploads/2023/04/subnav-arrow.png)no-repeat center;
-                                background-size:contain;
+                                background-size:60%;
                                 display:none;
-                                height:9px;
+                                height:30px;
                                 margin-left:5px;
                                 position:relative;
                                 transform:rotate(-90deg);
                                 transition:250ms transform;
                                 opacity:1;
-                                width:32px;
+                                width:30px;
                             }
                         }
 
@@ -223,7 +223,7 @@ body.category{
                         .label{
                             color:black;
                             font-size:14px;
-                            text-align:center;
+                            text-align:left;
                             position:relative;
                             
                         }
@@ -543,7 +543,7 @@ body.category{
                                 padding:43px 70px;
                                 position:absolute;
                                 pointer-events:none;
-                                top:calc(100% + 12px);
+                                top:calc(100% + 2px);
                                 transform:translate3d(-50%, 0, 0);
                                 -webkit-box-shadow: 3px 2px 20px 0px rgba(0,0,0,0.11);
                                 -moz-box-shadow: 3px 2px 20px 0px rgba(0,0,0,0.11);
@@ -555,6 +555,7 @@ body.category{
                                         color:#002C5F !important;
                                         font-size:18px;
                                         opacity:0.5;
+                                        width:100%;
                                     }
                                 }
         
