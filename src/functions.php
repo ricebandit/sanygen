@@ -113,7 +113,7 @@ add_action('init', 'my_pagination_rewrite');
 
 function remove_page_from_query_string($query_string)
 {
-    if (isset($query_string['paged'])) {
+    if (isset($query_string['paged'])  && !is_admin()) {
         unset($query_string['name']);
 		$GLOBALS['paged_n'] = $query_string['paged'];
         $query_string['paged'] = $query_string['page'];
@@ -253,6 +253,16 @@ if(!function_exists('wp_dump')) :
             throw Exception('You must provide at least one argument to this function.');
     }
 endif;
+
+/**
+ * CATEGORY PAGES
+ */
+function limit_category( $query ) {
+    if ( $query->is_category() && $query->is_archive() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', '24' );
+    }
+}
+add_action( 'pre_get_posts', 'limit_category' );
 
 
 /**

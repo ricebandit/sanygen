@@ -11,9 +11,9 @@ get_header();
 
 	<section class="hero container-fluid d-flex align-items-center" style="background:url(<?php echo get_field('hero_image'); ?>)no-repeat center; background-size:cover;">
 		<div class="bg-decor" style="background:url(<?php echo get_field('hero_image_decoration');?>)no-repeat center top; background-size:cover;"></div>
-		<div class="content col-12 col-xxl-10 offset-xxl-1 mt-md-5 mb-md-5">
+		<div class="content col-lg-4 offset-lg-1 col-xxl-4 offset-xxl-2 d-flex align-items-start flex-column">
 			<div class="row">
-				<div class="left col-md-6 col-lg-5 col-xxl-4">
+				<div class="left col-md-6 col-lg-11 col-xxl-6">
 					<h1 class="header text-darkblue"><?php echo get_field('hero_title'); ?></h1>
 					<div class="text-darkblue col-6 col-lg-12"><?php echo get_field('hero_description'); ?></div>
 					<a class="pill-cta orange mt-3" href="<?php echo get_field('hero_cta_url'); ?>"><?php echo get_field('hero_cta_text'); ?></a>
